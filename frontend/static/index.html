@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fitness Tracking App - Mockup</title>
+    <link rel="stylesheet" href="styles/style.css" />
+</head>
+<body>
+    <header class="app-header">
+        <h1>Fitness Tracking App for Athletes</h1>
+        <p>Fully focused on any athletes fitness needs.</p>
+        <p class="app-count">3 items, out of which 2 active</p>
+    </header>
+    <main class="container">
+        <section class="panel">
+            <h2>Add Workout</h2>
+            <form class="item-form">
+                <label>Title <input type="text" name="title" placeholder="Ex: Leg Day" /></label>
+                <label>Category
+                    <select name="category">
+                        <option value="strength">Strength</option>
+                        <option value="cardio">Cardio</option>
+                        <option value="mobility">Mobility</option>
+                    </select>
+                </label>
+                <button type="submit">Add</button>
+            </form>
+        </section>
+        <section class="panel">
+            <h2>My Workouts</h2>
+            <ul class="item-list">
+                <li class="item-card">
+                    <div>
+                        <h3>Leg Day Workout</h3>
+                        <span class="badge badge-strength">Strength</span>
+                    </div>
+                    <span class="status">Active</span>
+                </li>
+                <li class="item-card done">
+                    <div>
+                        <h3>Morning Run</h3>
+                        <span class="badge badge-cardio">Cardio</span>
+                    </div>
+                    <span class="status">Done</span>
+                </li>
+                <li class="item-card">
+                    <div>
+                        <h3>Stretching Session</h3>
+                        <span class="badge badge-mobility">Mobility</span>
+                    </div>
+                    <span class="status">Active</span>
+                </li>
+            </ul>
+        </section>
+    </main>
+    <footer class="app-footer">Web Technologies Project</footer>
+</body>
+</html>
