@@ -3,57 +3,69 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Fitness Tracking App - Mockup</title>
+    <title>Fitness Tracking App</title>
     <link rel="stylesheet" href="styles/style.css" />
 </head>
 <body>
     <header class="app-header">
-        <h1>Fitness Tracking App for Athletes</h1>
-        <p>Fully focused on any athletes fitness needs.</p>
-        <p class="app-count">3 items, out of which 2 active</p>
+        <div class="header-top">
+            <div>
+                <h1>Hi, Jane Doe.</h1>
+                <p>December 30, Tuesday</p>
+            </div>
+            <span class="menu-icon">☰</span>
+        </div>
     </header>
+
     <main class="container">
-        <section class="panel">
-            <h2>Add Workout</h2>
-            <form class="item-form">
-                <label>Title <input type="text" name="title" placeholder="Ex: Leg Day" /></label>
-                <label>Category
-                    <select name="category">
-                        <option value="strength">Strength</option>
-                        <option value="cardio">Cardio</option>
-                        <option value="mobility">Mobility</option>
-                    </select>
-                </label>
-                <button type="submit">Add</button>
-            </form>
+        <section class="metrics-grid">
+            <div class="metric-card">
+                <div class="metric-icon">🏃‍♂️</div>
+                <div class="metric-value">7,268</div>
+                <div class="metric-label">Steps</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-icon">❤️</div>
+                <div class="metric-value">4,115 <span class="unit">kcal</span></div>
+                <div class="metric-label">Cal Burn</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-icon">🔥</div>
+                <div class="metric-value">98 <span class="unit">BPM</span></div>
+                <div class="metric-label">Heartbeat</div>
+            </div>
         </section>
-        <section class="panel">
-            <h2>My Workouts</h2>
-            <ul class="item-list">
-                <li class="item-card">
-                    <div>
-                        <h3>Leg Day Workout</h3>
-                        <span class="badge badge-strength">Strength</span>
-                    </div>
-                    <span class="status">Active</span>
-                </li>
-                <li class="item-card done">
-                    <div>
-                        <h3>Morning Run</h3>
-                        <span class="badge badge-cardio">Cardio</span>
-                    </div>
-                    <span class="status">Done</span>
-                </li>
-                <li class="item-card">
-                    <div>
-                        <h3>Stretching Session</h3>
-                        <span class="badge badge-mobility">Mobility</span>
-                    </div>
-                    <span class="status">Active</span>
-                </li>
-            </ul>
+
+        <section class="panel calories-panel">
+            <div class="panel-header-row">
+                <h2>CALORIES</h2>
+                <span class="sub-text">Weekly Average<br><strong>112 CAL</strong></span>
+            </div>
+            <div class="chart-bars">
+                <div class="bar-col"><span></span><label>SUN</label></div>
+                <div class="bar-col"><span></span><label>MON</label></div>
+                <div class="bar-col active"><span></span><label>TUE</label></div>
+                <div class="bar-col"><span></span><label>WED</label></div>
+                <div class="bar-col"><span></span><label>THURS</label></div>
+                <div class="bar-col"><span></span><label>FRI</label></div>
+                <div class="bar-col"><span></span><label>SAT</label></div>
+            </div>
+        </section>
+
+        <section class="panel plan-panel">
+            <div class="panel-header-row">
+                <h2>Log Your Workouts</h2>
+                <a href="#" class="view-all"> &gt;</a>
+            </div>
+            <div class="workout-banner-card">
+                <div class="workout-info">
+                    <h3>Back Workout</h3>
+                    <p>MONDAY</p>
+                </div>
+            </div>
         </section>
     </main>
-    <footer class="app-footer">Web Technologies Project</footer>
+
+    <script src="exercises.js"></script>
 </body>
 </html>
