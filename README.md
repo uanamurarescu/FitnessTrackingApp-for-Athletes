@@ -29,6 +29,13 @@ Sample data used across all stages:
 
 Details per stage: see the `ai-log/` folder.
 
+## Stage 2: data logic
+Plain JavaScript, no DOM. `exercises.js` holds the array and the functions
+that read and change it. Results are printed in the browser console (F12).
+
+
+
 ## Status
 - [x] Stage 1: static mockup
-- [ ] Stage 2: data logic in JavaScript
+- [x] Stage 2: data logic in JavaScript
+☐ Stage 3: Vite and React project
