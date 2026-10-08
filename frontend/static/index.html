@@ -4,68 +4,159 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Fitness Tracking App</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;700;800&family=Jost:ital,wght@0,300;0,400;0,500;1,400;1,500&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,500,0,0" rel="stylesheet" />
     <link rel="stylesheet" href="styles/style.css" />
 </head>
 <body>
-    <header class="app-header">
-        <div class="header-top">
-            <div>
-                <h1>Hi, Jane Doe.</h1>
-                <p>December 30, Tuesday</p>
-            </div>
-            <span class="menu-icon">☰</span>
-        </div>
-    </header>
+    <button type="button" class="menu-btn" aria-label="Menu">
+        <span></span><span></span><span></span>
+    </button>
 
-    <main class="container">
-        <section class="metrics-grid">
-            <div class="metric-card">
-                <div class="metric-icon">🏃‍♂️</div>
-                <div class="metric-value">7,268</div>
-                <div class="metric-label">Steps</div>
+    <main class="dashboard">
+
+        <section class="left-col" aria-label="Daily summary">
+
+            <nav class="date-nav" aria-label="Date navigation">
+                <a href="#" id="prevDay" class="date-chip prev" aria-label="Previous day">
+                    <span class="material-symbols-rounded">chevron_left</span>
+                    <span id="prevLabel">06/09</span>
+                </a>
+                <h2 id="currentDate" class="current-date">07 September 2026</h2>
+                <a href="#" id="nextDay" class="date-chip next" aria-label="Next day">
+                    <span id="nextLabel">08/09</span>
+                    <span class="material-symbols-rounded">chevron_right</span>
+                </a>
+            </nav>
+
+            <div class="greeting-row">
+                <h1 class="greeting">
+                    <span class="hi">Hi,</span>
+                    <span class="name"><span id="userName">Oana</span>.</span>
+                </h1>
+                <div class="shortcuts">
+                    <button type="button" class="tag-link" data-table="Measurements">measurements.</button>
+                    <button type="button" class="tag-link" data-table="WeightHistory">weight history.</button>
+                </div>
             </div>
-            <div class="metric-card">
-                <div class="metric-icon">❤️</div>
-                <div class="metric-value">4,115 <span class="unit">kcal</span></div>
-                <div class="metric-label">Cal Burn</div>
-            </div>
-            <div class="metric-card">
-                <div class="metric-icon">🔥</div>
-                <div class="metric-value">98 <span class="unit">BPM</span></div>
-                <div class="metric-label">Heartbeat</div>
+
+            <p class="subtitle">Let's set up your log for today.</p>
+
+            <div class="stat-grid">
+
+                <article class="stat-card steps" data-table="DailyLog.Steps">
+                    <h3>Steps</h3>
+                    <p class="stat-big">
+                        <span class="material-symbols-rounded">directions_walk</span>
+                        <span id="steps">15000</span>
+                    </p>
+                </article>
+
+                <article class="stat-card calories" data-table="DailyLog.CaloriesEaten">
+                    <h3>Calories</h3>
+                    <p class="stat-line">eaten : <b id="calEaten">1800</b></p>
+                    <p class="stat-line">left : <b id="calLeft">260</b>
+                        <span class="material-symbols-rounded">rice_bowl</span>
+                    </p>
+                </article>
+
+                <article class="stat-card water" data-table="DailyLog.WaterIntake">
+                    <h3>Water<br>intake</h3>
+                    <div class="water-row">
+                        <p class="stat-value" id="water">4 L</p>
+                        <span class="material-symbols-rounded water-icon">water_bottle</span>
+                    </div>
+                </article>
+
+                <article class="stat-card rest" data-table="Workouts">
+                    <h3>Rest<br>day</h3>
+                    <span class="material-symbols-rounded rest-icon">accessibility_new</span>
+                </article>
+
+                <!-- Buton central -->
+                <button type="button" class="self-notes" data-table="DailyLog.SelfNotes">
+                    <span>Self<br>Notes.</span>
+                </button>
             </div>
         </section>
 
-        <section class="panel calories-panel">
-            <div class="panel-header-row">
-                <h2>CALORIES</h2>
-                <span class="sub-text">Weekly Average<br><strong>112 CAL</strong></span>
+        <section class="food-log" aria-labelledby="foodLogTitle">
+            <div class="food-left">
+                <h2 class="section-title" id="foodLogTitle">Food Log.</h2>
+                <div class="chip-cloud">
+                    <button type="button" class="chip chip-wide" data-table="Supplements">Supplements</button>
+                    <button type="button" class="chip" data-table="Calories">Calories</button>
+                    <button type="button" class="chip" data-table="FoodTracker">Food</button>
+                    <button type="button" class="mini-tag" data-table="Calories.Surplus">
+                        <span class="star">✳</span> Surplus
+                    </button>
+                </div>
             </div>
-            <div class="chart-bars">
-                <div class="bar-col"><span></span><label>SUN</label></div>
-                <div class="bar-col"><span></span><label>MON</label></div>
-                <div class="bar-col active"><span></span><label>TUE</label></div>
-                <div class="bar-col"><span></span><label>WED</label></div>
-                <div class="bar-col"><span></span><label>THURS</label></div>
-                <div class="bar-col"><span></span><label>FRI</label></div>
-                <div class="bar-col"><span></span><label>SAT</label></div>
+
+            <div class="macros">
+                <button type="button" class="macro" style="--w:100%" data-table="NutritionalValues.Carbs">
+                    <span>carbs.</span><b id="carbs">250</b>
+                </button>
+                <button type="button" class="macro" style="--w:82%" data-table="NutritionalValues.Protein">
+                    <span>protein.</span><b id="protein">130</b>
+                </button>
+                <button type="button" class="macro" style="--w:64%" data-table="NutritionalValues.Fats">
+                    <span>fats.</span><b id="fats">60</b>
+                </button>
+                <button type="button" class="kcal-line" data-table="FoodTracker" aria-label="Total calories">
+                    <span class="spark">✦</span>
+                    <span class="kcal-text"><span id="kcal">2060</span> kcal</span>
+                </button>
             </div>
         </section>
 
-        <section class="panel plan-panel">
-            <div class="panel-header-row">
-                <h2>Log Your Workouts</h2>
-                <a href="#" class="view-all"> &gt;</a>
+
+        <section class="workout-log" aria-labelledby="workoutLogTitle">
+            <h2 class="section-title" id="workoutLogTitle">Workout Log.</h2>
+            <div class="btn-stack">
+                <button type="button" class="pill-btn" data-table="Workouts">Workouts</button>
+                <button type="button" class="pill-btn" data-table="Cardio">Cardio</button>
             </div>
-            <div class="workout-banner-card">
-                <div class="workout-info">
-                    <h3>Back Workout</h3>
-                    <p>MONDAY</p>
+        </section>
+
+    
+        <section class="tracker" aria-labelledby="trackerTitle">
+            <div class="tracker-side">
+                <button type="button" class="add-btn" data-table="FoodTracker">ADD</button>
+                <h2 class="tracker-title" id="trackerTitle">Food<br>Tracker<br>Shortcut.</h2>
+            </div>
+            <div class="tracker-fields">
+                <input class="field" type="text" name="food" placeholder="Enter Food Name.." aria-label="Food name" />
+                <input class="field" type="number" name="grams" min="1" placeholder="Enter the quantity.." aria-label="Quantity (grams)" />
+                <div class="select-wrap">
+                    <select class="field" name="meal" aria-label="Meal">
+                        <option value="" selected disabled>Choose the meal</option>
+                        <option>Breakfast</option>
+                        <option>Lunch</option>
+                        <option>Dinner</option>
+                        <option>Snack</option>
+                    </select>
+                    <span class="material-symbols-rounded">expand_more</span>
                 </div>
             </div>
         </section>
-    </main>
 
+        <section class="recovery-log" aria-labelledby="recoveryLogTitle">
+            <h2 class="section-title" id="recoveryLogTitle">Recovery Log.</h2>
+            <div class="btn-grid">
+                <button type="button" class="pill-btn" data-table="Sleep">Sleep</button>
+                <button type="button" class="pill-btn" data-table="Massage">Massage</button>
+                <button type="button" class="pill-btn" data-table="Mobility">Mobility</button>
+                <button type="button" class="pill-btn" data-table="MedicalRecovery">Medical Recovery</button>
+                <button type="button" class="mini-tag injuries-tag" data-table="Injuries">
+                    <span class="star">✳</span> Injuries
+                </button>
+            </div>
+        </section>
+    </main>
+    <div>"Web Technology Project" - Fitness Tracking App</div>
     <script src="exercises.js"></script>
 </body>
 </html>
