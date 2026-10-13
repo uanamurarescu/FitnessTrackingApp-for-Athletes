@@ -1,4 +1,4 @@
-# Stage 1: AI log
+# Stage 2: AI log
 ## Tools
 - <Gemini Pro, copilot in VSCode>
 ## Conversations
