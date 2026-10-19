@@ -582,3 +582,82 @@ button {
   .tracker-title br { display: none; }
   .add-btn { order: 2; flex-shrink: 0; }
 }
+
+:root {
+  --cream: #fffbd0;
+  --green: #5aaf7a;
+  --pale: rgba(232, 240, 222, 0.85);
+}
+
+body { font-family: "Century Gothic", "Futura", "Trebuchet MS", sans-serif; }
+
+/* header */
+.app-header { text-align: left; padding: 2rem 1.5rem 0.5rem; color: var(--cream); }
+.app-header h1 { margin: 0; font-size: 3rem; line-height: 1; font-weight: 700; }
+.app-header p { margin: 0.4rem 0 0; }
+.app-count { font-style: italic; opacity: 0.9; }
+
+/* panel: fără fundal, titlul și pastilele stau direct pe gradient */
+.container { max-width: 620px; margin: 0; padding: 1rem 1.5rem 2rem; }
+.panel { background: transparent; box-shadow: none; padding: 0; }
+.panel h2 {
+  color: var(--cream);
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 1rem 0;
+}
+.panel h2::after { content: "."; }
+
+/* lista = pastile ca la carbs / protein / fats */
+.exercise-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.9rem; }
+
+.exercise-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.9rem 1.6rem;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--green) 55%, rgba(124, 92, 230, 0.15));
+  color: var(--cream);
+  border: none;
+}
+.exercise-card h3 {
+  margin: 0;
+  font-size: 1.3rem;
+  font-style: italic;
+  font-weight: 600;
+}
+.exercise-details {
+  margin: 0.15rem 0 0.4rem;
+  font-size: 0.85rem;
+  font-style: italic;
+  opacity: 0.85;
+}
+
+/* eticheta mică, ca "Surplus" */
+.badge {
+  display: inline-block;
+  padding: 2px 12px;
+  border-radius: 999px;
+  background: var(--pale);
+  color: var(--green);
+  font-size: 0.75rem;
+  font-style: italic;
+}
+.badge-quads, .badge-hams, .badge-glutes, .badge-calves {
+  background: var(--pale);
+  color: var(--green);
+}
+
+/* valoarea din dreapta */
+.exercise-side { display: flex; flex-direction: column; align-items: flex-end; }
+.exercise-pr { font-size: 1.8rem; font-style: italic; }
+.status { font-size: 0.75rem; letter-spacing: 0.05em; text-transform: uppercase; opacity: 0.85; }
+
+/* exercițiu terminat */
+.exercise-card.done {
+  background: linear-gradient(90deg, rgba(90, 175, 122, 0.45) 55%, rgba(124, 92, 230, 0.1));
+}
+.exercise-card.done h3 { text-decoration: line-through; opacity: 0.75; }
+
+.empty { color: var(--cream); font-style: italic; }

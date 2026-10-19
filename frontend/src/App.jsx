@@ -1,16 +1,14 @@
-const names = ['Squats', 'Lunges', 'Deadlifts', 'LegPress', 'CalfRaises', 'LegExtensions', 'LegCurls', 'GluteBridges', 'StepUps'];
-const PR = ['100 kg', '80 kg', '120 kg', '150 kg', '60 kg', '70 kg', '50 kg', '90 kg', '40 kg'];
-const executionForm = ['deep squats', 'forward lunges', 'Romanian deadlifts', 'machine leg press', 'standing calf raises', 'seated leg extensions', 'lying leg curls', 'lateral step-ups'];
+import ExercisesList from "./components/ExercisesList.jsx";
 
 const exercises = [
-  { id: 1, name: names[0], PR: PR[0], executionForm: executionForm[0] },
-  { id: 2, name: names[1], PR: PR[1], executionForm: executionForm[1] },
-  { id: 3, name: names[2], PR: PR[2], executionForm: executionForm[2] },
-  { id: 4, name: names[3], PR: PR[3], executionForm: executionForm[3] }
+  { id: 1, name: "Squats", PR: "100 kg", executionForm: "deep squats", muscleGroup: "quads", done: true },
+  { id: 2, name: "Lunges", PR: "80 kg", executionForm: "forward lunges", muscleGroup: "glutes", done: false },
+  { id: 3, name: "Deadlifts", PR: "120 kg", executionForm: "Romanian deadlifts", muscleGroup: "hams", done: false },
+  { id: 4, name: "LegPress", PR: "150 kg", executionForm: "machine leg press", muscleGroup: "quads", done: true },
 ];
 
 export default function App() {
-  const count = exercises.filter((e) => !e.active).length;
+  const count = exercises.filter((e) => e.done).length;
 
   return (
     <>
@@ -24,7 +22,7 @@ export default function App() {
       <main className="container">
         <section className="panel">
           <h2>My Exercises</h2>
-          <pre>{JSON.stringify(exercises, null, 2)}</pre>
+          <ExercisesList exercises={exercises} />
         </section>
       </main>
     </>

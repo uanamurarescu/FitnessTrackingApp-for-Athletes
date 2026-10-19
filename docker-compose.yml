@@ -1,0 +1,15 @@
+services:
+  mariadb:
+    image: mariadb:11
+    container_name: FitnessTracker_mariadb
+    restart: unless-stopped
+    environment:
+      MARIADB_ROOT_PASSWORD: oanabossusmekeru6969
+      MARIADB_DATABASE: Fitness_Tracker
+    ports:
+      - "3305:3306"
+    volumes:
+      - mariadb_data:/var/lib/mysql
+
+volumes:
+  mariadb_data:
