@@ -43,7 +43,7 @@ export default function App() {
   useEffect(() => {
     try {
       localStorage.setItem("foods", JSON.stringify(foods));
-    } catch {
+    } catch { //stocare indisponibila
     }
   }, [foods]);
 

@@ -3,7 +3,7 @@ import "./Food_Tracker.css";
 import { MEAL_OPTIONS } from "./Food_AddForm.jsx";
 
 function toClassName(value) {
-  return String(value).toLowerCase().replace(/\s+/g, "_");
+  return String(value).toLowerCase().replace(/\s+/g, "-");
 }
 
 export default function FoodTrackList({ foods, onDelete }) {

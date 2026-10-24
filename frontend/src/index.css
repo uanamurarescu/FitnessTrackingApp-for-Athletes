@@ -271,18 +271,6 @@ button {
 }
 
 
-.badge {
-  display: inline-block;
-  padding: 0.2rem 0.9rem;
-  border-radius: var(--radius-pill);
-  background: var(--green);
-  color: var(--cream);
-  font-style: italic;
-  font-size: 1rem;
-  white-space: nowrap;
-}
-
-
 
 @media (max-width: 1100px) {
   html { font-size: 14px; }
