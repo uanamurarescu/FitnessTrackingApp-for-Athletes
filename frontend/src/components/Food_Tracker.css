@@ -1,0 +1,207 @@
+
+.tracker {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1.1rem;
+}
+
+.tracker-side {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.1rem 0 0 0.4rem;
+}
+
+.add-btn {
+  width: 5.2rem;
+  height: 5.2rem;
+  border-radius: 1.4rem;
+  background: var(--grad-accent);
+  color: var(--cream);
+  font-family: var(--font-head);
+  font-weight: 800;
+  font-size: 1.6rem;
+  box-shadow: 0 0.4rem 0.75rem rgba(80, 60, 160, 0.3);
+  transition: transform 0.2s;
+}
+.add-btn:hover { transform: scale(1.06); }
+.add-btn:active { transform: scale(0.97); }
+
+.tracker-title {
+  margin: 0;
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: 1.5rem;
+  line-height: 1.2;
+}
+
+.tracker-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.tracker-error {
+  margin: 0;
+  padding: 0 0.4rem;
+  color: var(--danger);
+  font-style: italic;
+  font-size: 1.05rem;
+}
+
+
+.food-panel {
+  max-width: 105rem;
+  margin: 0 auto;
+  padding: 2rem 3.5rem 3rem 2.5rem;
+  scroll-margin-top: 1rem;
+}
+
+.food-panel-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem 2rem;
+}
+
+.food-count {
+  margin: 0;
+  font-style: italic;
+  font-size: 1.6rem;
+}
+
+.food-panel-sub {
+  margin: 0.2rem 0 1.6rem 2.2rem;
+  font-size: 1.35rem;
+}
+
+
+
+.meal-columns {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 1.2rem;
+  align-items: start;
+}
+
+.meal-col--breakfast { --meal: var(--green); }
+.meal-col--lunch     { --meal: #3fa7a8; }
+.meal-col--dinner    { --meal: #7a6fd6; }
+.meal-col--snack-1   { --meal: #9b7cf2; }
+.meal-col--snack-2   { --meal: #b07ae6; }
+.meal-col--snack-3   { --meal: #c47bd8; }
+
+.meal-col {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  min-width: 0;
+}
+
+
+.meal-head {
+  padding: 0.7rem 1rem;
+  border-radius: 1.2rem;
+  background: var(--meal);
+  box-shadow: var(--shadow-pill);
+}
+.meal-title {
+  margin: 0;
+  font-family: var(--font-head);
+  font-weight: 800;
+  font-size: 1.55rem;
+  letter-spacing: -0.04em;
+}
+.meal-total {
+  margin: 0.1rem 0 0;
+  font-style: italic;
+  font-size: 1.1rem;
+  opacity: 0.9;
+}
+
+.meal-items {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+
+.meal-empty {
+  margin: 0;
+  padding: 0.8rem 1rem;
+  border: 2px dashed rgba(255, 251, 216, 0.5);
+  border-radius: 0.8rem;
+  font-style: italic;
+  font-size: 1.1rem;
+  text-align: center;
+  opacity: 0.85;
+}
+
+
+.food-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0.6rem 0.6rem 0.6rem 0.9rem;
+  border-left: 0.35rem solid var(--meal, var(--green));
+  border-radius: 0.8rem;
+  background: var(--card);
+  color: var(--green-text);
+  box-shadow: var(--shadow-card);
+}
+
+.food-main { min-width: 0; }
+
+.food-name {
+  margin: 0;
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: 1.2rem;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  color: var(--green-deep);
+  overflow-wrap: anywhere;
+}
+
+.food-details {
+  margin: 0.15rem 0 0;
+  font-style: italic;
+  font-size: 1.1rem;
+}
+
+.food-delete {
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background: rgba(90, 174, 120, 0.2);
+  color: var(--green-text);
+  transition: background 0.2s, color 0.2s;
+}
+.food-delete .material-symbols-rounded { font-size: 1.3rem; }
+.food-delete:hover { background: var(--danger); color: var(--cream); }
+
+
+
+@media (max-width: 1100px) {
+  .food-panel { max-width: 640px; padding: 1rem 1.5rem 2.5rem; }
+  .meal-columns { grid-template-columns: repeat(3, minmax(0, 1fr)); row-gap: 2rem; }
+}
+
+@media (max-width: 600px) {
+  .tracker { grid-template-columns: 1fr; }
+  .tracker-side { flex-direction: row; align-items: center; padding: 0.3rem; }
+  .tracker-title br { display: none; }
+  .add-btn { order: 2; flex-shrink: 0; }
+
+  .food-panel { padding: 1rem 1rem 2rem; }
+  .meal-columns { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
