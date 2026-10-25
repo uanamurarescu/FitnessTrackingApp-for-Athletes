@@ -41,9 +41,11 @@ npm install
 npm run dev
 Then open the address printed in the terminal (http://localhost:5173).
 ## Stage 4: components
-The list is rendered from the data, through two components:
-- `TaskList` receives the whole array and renders one card per item
-- `TaskCard` receives a single item through props and displays it
+The food tracker is rendered from the data, through three components. The data lives in `App.jsx`, which keeps the food list in state (`useState`), saves it in `localStorage` and passes it down through props:
+- `Food_AddForm.jsx` – the "Food Tracker Shortcut." form: reads the food name, quantity and meal, validates them and sends the new food to `App.jsx` through the `onAdd` prop. It also defines and exports the `MEAL_OPTIONS` array (the 6 meals).
+- `Food_TrackList.jsx` – receives the whole array and groups it into 6 columns, one per meal from `MEAL_OPTIONS`, with the number of items and total grams for each meal.
+- `Food_TrackCard.jsx` – receives a single food through props and displays its name and quantity, with an X button that deletes it through the `onDelete` prop.
+- `Food_Tracker.css` – the styles of the three components: the form layout, the meal columns and their colors, and the food cards. General components and variables come from `index.css`.
 
 
 
@@ -52,5 +54,5 @@ The list is rendered from the data, through two components:
 - [x] Stage 2: data logic in JavaScript
 - [x] Stage 3: Vite & React
 - [x] Stage 4: components rendered from data
-☐ Stage 5: local state and events
+- ☐ Stage 5: local state and events
 
