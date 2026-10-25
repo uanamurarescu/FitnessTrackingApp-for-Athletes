@@ -25,12 +25,12 @@ Sample data used across all stages:
 | Model / Tool | Integration Scope |
 | :--- | :--- |
 | `Gemini PRO` | HTML debugging code |
-| `Claude` | CSS styling, structure refinement, and debugging code, stage 1 |
+| `Claude PRO` | CSS styling, structure refinement, and debugging code, stage 1 |
 
 Details per stage: see the `ai-log/` folder.
 
 ## Stage 2: data logic
-Plain JavaScript, no DOM. `exercises.js` holds the array and the functions
+Plain JavaScript, no DOM. `quick_food_tracked.js` holds the array and the functions
 that read and change it. Results are printed in the browser console (F12).
 ## Stage 3: Vite and React project
 The app now lives in `frontend/`, built with Vite. The data from stage 2
@@ -40,6 +40,10 @@ cd frontend
 npm install
 npm run dev
 Then open the address printed in the terminal (http://localhost:5173).
+## Stage 4: components
+The list is rendered from the data, through two components:
+- `TaskList` receives the whole array and renders one card per item
+- `TaskCard` receives a single item through props and displays it
 
 
 
@@ -47,4 +51,6 @@ Then open the address printed in the terminal (http://localhost:5173).
 - [x] Stage 1: static mockup
 - [x] Stage 2: data logic in JavaScript
 - [x] Stage 3: Vite & React
+- [x] Stage 4: components rendered from data
+☐ Stage 5: local state and events
 
