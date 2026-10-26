@@ -72,7 +72,7 @@
   }
 }
 
-/* Tema intunecata aleasa din buton: are prioritate fata de cea a sistemului */
+
 :root[data-theme="dark"] {
   color-scheme: dark;
 
