@@ -1,4 +1,3 @@
-
 :root {
   
   --cream: #fffbd8;
@@ -37,6 +36,69 @@
   --shadow-panel: 0 0.5rem 1.25rem rgba(40, 30, 80, 0.18);
   --shadow-pill: 0 0.25rem 0.6rem rgba(30, 70, 50, 0.2);
   --title-shadow: 0 0.2rem 0.2rem rgba(60, 50, 90, 0.35);
+
+  --tag-hover: var(--cream);
+}
+
+
+/* Tema intunecata a sistemului, daca utilizatorul nu a ales explicit tema luminoasa din buton */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+
+    --cream-soft: rgba(255, 251, 216, 0.7);
+    --green: #3f8f5c;
+    --green-hover: #4fa36d;
+    --green-text: #8fdca9;
+    --green-deep: #d2f2dc;
+    --teal: #2f8f93;
+    --teal-hover: #37a5a8;
+    --ink: #ece9f7;
+    --danger: #ff8aa2;
+
+    --card: rgba(34, 52, 44, 0.92);
+    --card-soft: rgba(34, 52, 44, 0.88);
+    --panel: rgba(36, 33, 58, 0.94);
+
+    --grad-page: linear-gradient(100deg, #10291b 0%, #15303a 38%, #211c47 70%, #29154f 100%);
+    --grad-field: linear-gradient(90deg, #3a8456, #6c55c2);
+
+    --shadow-card: 0 0.4rem 1.1rem rgba(0, 0, 0, 0.35);
+    --shadow-panel: 0 0.5rem 1.25rem rgba(0, 0, 0, 0.4);
+    --shadow-pill: 0 0.25rem 0.6rem rgba(0, 0, 0, 0.35);
+    --title-shadow: 0 0.2rem 0.3rem rgba(0, 0, 0, 0.5);
+
+    --tag-hover: rgba(52, 78, 64, 0.95);
+  }
+}
+
+/* Tema intunecata aleasa din buton: are prioritate fata de cea a sistemului */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+
+  --cream-soft: rgba(255, 251, 216, 0.7);
+  --green: #3f8f5c;
+  --green-hover: #4fa36d;
+  --green-text: #8fdca9;
+  --green-deep: #d2f2dc;
+  --teal: #2f8f93;
+  --teal-hover: #37a5a8;
+  --ink: #ece9f7;
+  --danger: #ff8aa2;
+
+  --card: rgba(34, 52, 44, 0.92);
+  --card-soft: rgba(34, 52, 44, 0.88);
+  --panel: rgba(36, 33, 58, 0.94);
+
+  --grad-page: linear-gradient(100deg, #10291b 0%, #15303a 38%, #211c47 70%, #29154f 100%);
+  --grad-field: linear-gradient(90deg, #3a8456, #6c55c2);
+
+  --shadow-card: 0 0.4rem 1.1rem rgba(0, 0, 0, 0.35);
+  --shadow-panel: 0 0.5rem 1.25rem rgba(0, 0, 0, 0.4);
+  --shadow-pill: 0 0.25rem 0.6rem rgba(0, 0, 0, 0.35);
+  --title-shadow: 0 0.2rem 0.3rem rgba(0, 0, 0, 0.5);
+
+  --tag-hover: rgba(52, 78, 64, 0.95);
 }
 
 
@@ -166,7 +228,7 @@ button {
   transition: background 0.2s;
 }
 .mini-tag .star { font-style: normal; font-size: 1.2rem; }
-.mini-tag:hover { background: var(--cream); }
+.mini-tag:hover { background: var(--tag-hover); }
 
 
 .tag-link {

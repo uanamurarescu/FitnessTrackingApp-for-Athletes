@@ -1,6 +1,7 @@
 import { useState , useEffect } from "react";
 import FoodTrackList from "./components/Food_TrackList.jsx";
 import FoodAddForm from "./components/Food_AddForm.jsx";
+import WorkoutLogList from "./components/Exercises_LogList.jsx";
 import "./App.css";
 
 const initialFoods = [
@@ -17,6 +18,47 @@ const initialFoods = [
   { id: 11, name: "Greek yogurt", quantity: 150, mealLog: "snack 2" },
   { id: 12, name: "Almonds", quantity: 100, mealLog: "snack 3" }
 ];
+
+const initialWorkouts = [
+  // PUSH
+  { id: 1,  exercises: "Barbell Bench Press",        volume: "3x8",  split: "PushWorkout", done: false },
+  { id: 2,  exercises: "Incline Dumbbell Press",     volume: "2x10", split: "PushWorkout", done: false },
+  { id: 3,  exercises: "Overhead Press",             volume: "3x12", split: "PushWorkout", done: false },
+  { id: 4,  exercises: "Cable Fly",                  volume: "3x12", split: "PushWorkout", done: false },
+  { id: 5,  exercises: "Lateral Raise",              volume: "3x6",  split: "PushWorkout", done: false },
+  { id: 6,  exercises: "Triceps Pushdown",           volume: "3x10", split: "PushWorkout", done: false },
+  { id: 7,  exercises: "Overhead Triceps Extension", volume: "3x10", split: "PushWorkout", done: false },
+  // PULL
+  { id: 8,  exercises: "Pull-Up",                    volume: "2x8",  split: "PullWorkout", done: false },
+  { id: 9,  exercises: "Lat Pulldown",               volume: "3x8",  split: "PullWorkout", done: false },
+  { id: 10, exercises: "Barbell Row",                volume: "2x10", split: "PullWorkout", done: false },
+  { id: 11, exercises: "Seated Cable Row",           volume: "3x12", split: "PullWorkout", done: false },
+  { id: 12, exercises: "Face Pull",                  volume: "3x12", split: "PullWorkout", done: false },
+  { id: 13, exercises: "Rear Delt Fly",              volume: "3x6",  split: "PullWorkout", done: false },
+  { id: 14, exercises: "Barbell Curl",               volume: "3x10", split: "PullWorkout", done: false },
+  { id: 15, exercises: "Hammer Curl",                volume: "3x10", split: "PullWorkout", done: false },
+  // LEGS
+  { id: 16, exercises: "Barbell Squat",              volume: "2x8",  split: "LegsWorkout", done: false },
+  { id: 17, exercises: "Romanian Deadlift",          volume: "3x8",  split: "LegsWorkout", done: false },
+  { id: 18, exercises: "Leg Press",                  volume: "2x10", split: "LegsWorkout", done: false },
+  { id: 19, exercises: "Bulgarian Split Squat",      volume: "3x12", split: "LegsWorkout", done: false },
+  { id: 20, exercises: "Leg Extension",              volume: "3x12", split: "LegsWorkout", done: false },
+  { id: 21, exercises: "Leg Curl",                   volume: "3x6",  split: "LegsWorkout", done: false },
+  { id: 22, exercises: "Calf Raise",                 volume: "3x10", split: "LegsWorkout", done: false },
+];
+
+function temaInitiala() {
+  return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+}
+
+function loadList(key, fallback) {
+  try {
+    const saved = localStorage.getItem(key);
+    return saved ? JSON.parse(saved) : fallback;
+  } catch {
+    return fallback;
+  }
+}
 
 function nextId(lista) {
   return lista.reduce((max, e) => Math.max(max, e.id), 0) + 1;
@@ -39,23 +81,48 @@ export default function App() {
       return initialFoods;
     }
   });
-
   useEffect(() => {
     try {
       localStorage.setItem("foods", JSON.stringify(foods));
-    } catch { //stocare indisponibila
+    } catch {
     }
   }, [foods]);
-
   const totalGrams = foods.reduce((sum, e) => sum + e.quantity, 0);
-
   function addMeal(food) {
     setFoods((prev) => addFood(prev, food));
   }
- 
   function deleteMeal(id) {
     setFoods((prev) => deleteFood(prev, id));
   }
+
+
+  const [workouts, setWorkouts] = useState(() => loadList("workouts", initialWorkouts));
+  useEffect(() => {
+    try {
+      localStorage.setItem("workouts", JSON.stringify(workouts));
+    } catch {
+      // stocare indisponibila
+    }
+  }, [workouts]);
+  function addWorkout(workout) {
+    setWorkouts((prev) => [...prev, { id: nextId(prev), done: false, ...workout }]);
+  }
+  function toggleWorkout(id) {
+    setWorkouts((prev) =>
+      prev.map((w) => (w.id === id ? { ...w, done: !w.done } : w))
+    );
+  }
+  function deleteWorkout(id) {
+    setWorkouts((prev) => prev.filter((w) => w.id !== id));
+  }
+
+  const [tema, setTema] = useState(temaInitiala);
+  function handleTema() {
+    const noua = tema === "dark" ? "light" : "dark";
+    setTema(noua);
+    document.documentElement.dataset.theme = noua;
+  }
+
   return (
    <>
       <button type="button" className="menu-btn" aria-label="Menu">
@@ -63,6 +130,10 @@ export default function App() {
         <span></span>
         <span></span>
       </button>
+
+      <button type="button" className="theme-toggle" onClick={handleTema} aria-pressed={tema === "dark"}>
+  {tema === "dark" ? "Light mode" : "Dark mode"}
+</button>
  
       <main className="dashboard">
       
@@ -168,7 +239,7 @@ export default function App() {
         <section className="workout-log" aria-labelledby="workoutLogTitle">
           <h2 className="section-title" id="workoutLogTitle">Workout Log.</h2>
           <div className="btn-stack">
-            <button type="button" className="pill-btn" data-table="Workouts">Workouts</button>
+            <a href="#workout-log" className="pill-btn" data-table="Workouts">Workouts</a>
             <button type="button" className="pill-btn" data-table="Cardio">Cardio</button>
           </div>
         </section>
@@ -193,6 +264,13 @@ export default function App() {
  
       
       <FoodTrackList foods={foods} onDelete={deleteMeal} />
+
+      <WorkoutLogList
+        workouts={workouts}
+        onAdd={addWorkout}
+        onToggle={toggleWorkout}
+        onDelete={deleteWorkout}
+      />
  
       <footer className="site-footer">"Web Technology Project" - Fitness Tracking App</footer>
     </>

@@ -466,19 +466,19 @@ for l in log:
                     random.choice(['Upper Body', 'Lower Body', 'Full Body', 'Push', 'Pull', 'Legs']),
                     random.choice(['Great session!', 'Felt tired today', 'New PR achieved!', 'Up the load.', 'Add another set.', 'Lower the volume.', 'Felt energized today!']),
                 ))
-    workout_res = run_select("SELECT WorkoutID FROM Workouts WHERE LogID = %s ORDER BY WorkoutID DESC LIMIT 1",
+    Exercises_res = run_select("SELECT WorkoutID FROM Workouts WHERE LogID = %s ORDER BY WorkoutID DESC LIMIT 1",
                              (l,))
-    workout_id = workout_res[0][0] if workout_res else None
+    Exercises_id = Exercises_res[0][0] if Exercises_res else None
 
 
-    if workout_id and e_id:
+    if Exercises_id and e_id:
         selected_exercises = random.sample(exercise_ids, min(3, len(exercise_ids)))
         for ex_id in selected_exercises:
             run_execute("""
                         INSERT INTO WorkoutExercises (WorkoutID, ExerciseID, SetType, Sets, Reps, Weight, RIR, Duration)
                         VALUES (%s, %s, %s, %s, %s, %s, %s, %s)
                         """, (
-                            workout_id,
+                            Exercises_id,
                             ex_id,
                             random.choice(['Working', 'Warmup', 'DropSet', 'Feeder']),
                             random.randint(1, 30),

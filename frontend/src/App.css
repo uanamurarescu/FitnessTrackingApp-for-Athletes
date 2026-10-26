@@ -17,6 +17,12 @@
   transition: background 0.2s;
 }
 .menu-btn:hover span { background: var(--cream); }
+.theme-toggle {
+  position: fixed;
+  top: 1.6rem;
+  right: 6rem;      
+  z-index: 20;
+}
 
 
 
