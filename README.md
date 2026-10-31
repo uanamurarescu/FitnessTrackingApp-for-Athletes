@@ -92,3 +92,15 @@ The food tracker is rendered from the data, through three components. The data l
 | S3-R5 | node_modules ignored, build passes | [.gitignore#L10](https://github.com/uanamurarescu/FitnessTrackingApp-for-Athletes/blob/a29b48a5fe84de979cd8d64aa8fc5489807c63d1/frontend/.gitignore#L10) | npm run build |
 | S3-R6 | README Stage 3 section + AI log | [README.md#L35-L42](https://github.com/uanamurarescu/FitnessTrackingApp-for-Athletes/blob/a29b48a5fe84de979cd8d64aa8fc5489807c63d1/README.md#L35-L42), [etapa-03.md](https://github.com/uanamurarescu/FitnessTrackingApp-for-Athletes/blob/a29b48a5fe84de979cd8d64aa8fc5489807c63d1/ai-log/etapa-03.md) | read |
 | S3-R7 | commit "Stage 3" pushed | [a29b48a](https://github.com/uanamurarescu/FitnessTrackingApp-for-Athletes/commit/a29b48a5fe84de979cd8d64aa8fc5489807c63d1) | commit history |
+
+## Stage 4: checklist
+ 
+| ID | Requirement | Where (permalink) | How to check |
+|---|---|---|---|
+| S4-R1 | 2+ components in src/components/ | [frontend/src/components/](https://github.com/uanamurarescu/FitnessTrackingApp-for-Athletes/tree/06837eee6841c7c8f488721fb68eeb2b3fb6b9b6/frontend/src/components) | open folder |
+| S4-R2 | card receives data through props | [Food_TrackCard.jsx#L3-L9](https://github.com/uanamurarescu/FitnessTrackingApp-for-Athletes/blob/06837eee6841c7c8f488721fb68eeb2b3fb6b9b6/frontend/src/components/Food_TrackCard.jsx#L3-L9) | read |
+| S4-R3 | map + key={id}, no console warnings | [Food_TrackList.jsx#L25-L53](https://github.com/uanamurarescu/FitnessTrackingApp-for-Athletes/blob/06837eee6841c7c8f488721fb68eeb2b3fb6b9b6/frontend/src/components/Food_TrackList.jsx#L25-L53) | F12, Console |
+| S4-R4 | message for empty list | [Food_TrackList.jsx#L42-L43](https://github.com/uanamurarescu/FitnessTrackingApp-for-Athletes/blob/06837eee6841c7c8f488721fb68eeb2b3fb6b9b6/frontend/src/components/Food_TrackList.jsx#L42-L43) | set array to [] |
+| S4-R5 | state changes the card look | — (the food card has no state-dependent look) | toggle a done flag |
+| S4-R6 | README Stage 4 section + AI log | [README.md#L43-L48](https://github.com/uanamurarescu/FitnessTrackingApp-for-Athletes/blob/06837eee6841c7c8f488721fb68eeb2b3fb6b9b6/README.md#L43-L48), [etapa-04.md](https://github.com/uanamurarescu/FitnessTrackingApp-for-Athletes/blob/06837eee6841c7c8f488721fb68eeb2b3fb6b9b6/ai-log/etapa-04.md) | read |
+| S4-R7 | commit "Stage 4" pushed | [1944004](https://github.com/uanamurarescu/FitnessTrackingApp-for-Athletes/commit/19440042c113cab62ecfb3e0e0f342031bed5875), [06837ee](https://github.com/uanamurarescu/FitnessTrackingApp-for-Athletes/commit/06837eee6841c7c8f488721fb68eeb2b3fb6b9b6) | commit history |
