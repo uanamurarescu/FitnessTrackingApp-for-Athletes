@@ -46,6 +46,25 @@ The food tracker is rendered from the data, through three components. The data l
 - `Food_TrackList.jsx` – receives the whole array and groups it into 6 columns, one per meal from `MEAL_OPTIONS`, with the number of items and total grams for each meal.
 - `Food_TrackCard.jsx` – receives a single food through props and displays its name and quantity, with an X button that deletes it through the `onDelete` prop.
 - `Food_Tracker.css` – the styles of the three components: the form layout, the meal columns and their colors, and the food cards. General components and variables come from `index.css`.
+## Stage 5: local state and events
+The dashboard now works with data kept in React state, owned by `App.jsx` and passed down through props.
+
+- **Workout log (Push / Pull / Legs):** exercises can be added, ticked and deleted from the page. A ticked exercise gets its name crossed out, and the counters ("22 exercises, 21 left to do", "1 / 7 done") are computed from the list, not stored separately.
+- **One log per day:** the arrows next to the date move between days. Each day has its own foods, exercises, water intake and steps, so a new day starts empty.
+- **Calories and macros:** carbs, protein, fats and the total kcal are calculated from the foods logged that day, using the values per 100 g in `nutrition.js`. The bars show the progress towards the daily goal (2060 kcal), and the Calories card shows what was eaten and what is left.
+- **Water and steps:** water is added in steps of 250 / 500 ml under the food tracker, and daily steps are saved next to the workout splits. Both update the Water intake and Steps cards.
+- **Light / dark mode:** a button switches the theme by setting `data-theme` on `<html>`. All colours come from CSS variables in `index.css`, in a Daisy Bush (#4C1C9F) and Orchid (#E97AD3) palette, with a matching dark version.
+
+New components added in this stage:
+- `Exercises_AddForm.jsx` – the white row for adding an exercise (name, sets x reps, split), with validation. It also defines and exports the `SPLIT_OPTIONS` array.
+- `Exercises_LogList.jsx` – groups the day's exercises into Push / Pull / Legs columns and computes the counters.
+- `Exercises_LogCard.jsx` – one exercise, with a controlled checkbox (`onToggle`) and a delete button (`onDelete`).
+- `Exercises_Steps.jsx` – the Steps column: shows the day's steps and progress, and saves a new total.
+- `Food_WaterIntake.jsx` – the Water intake row under the meal columns, with a progress bar and +250 / +500 / −250 ml buttons.
+- `Exercises_Log.css` – the styles of the workout log and the Steps column.
+- `nutrition.js` – the nutrition values per 100 g and the functions that add up the macros and calories.
+
+All updates are immutable (`map`, `filter`, spread), never `push` or direct assignment. The data is saved in `localStorage`, so it stays after a refresh in the same browser. Stage 6 will load it from an API and stage 10 will store it in the database.
 
 
 
@@ -54,7 +73,9 @@ The food tracker is rendered from the data, through three components. The data l
 - [x] Stage 2: data logic in JavaScript
 - [x] Stage 3: Vite & React
 - [x] Stage 4: components rendered from data
-- ☐ Stage 5: local state and events
+- [x] Stage 5: local state and events
+- [ ] Stage 6: loading data from a mock API
+
 
 ## Stage 1: checklist
  
