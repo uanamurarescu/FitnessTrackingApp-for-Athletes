@@ -80,3 +80,15 @@ The food tracker is rendered from the data, through three components. The data l
 | S2-R5 | original array unchanged after add | [exercises.js#L55](https://github.com/uanamurarescu/FitnessTrackingApp-for-Athletes/blob/b5a0a1c7451b8a0326f8466cfd109de4f069c334/frontend/static/exercises.js#L55) | console line |
 | S2-R6 | README Stage 2 section + AI log | [README.md#L32-L34](https://github.com/uanamurarescu/FitnessTrackingApp-for-Athletes/blob/b5a0a1c7451b8a0326f8466cfd109de4f069c334/README.md#L32-L34), [etapa-02.md](https://github.com/uanamurarescu/FitnessTrackingApp-for-Athletes/blob/b5a0a1c7451b8a0326f8466cfd109de4f069c334/ai-log/etapa-02.md) | read |
 | S2-R7 | commit "Stage 2" pushed | [0de6357](https://github.com/uanamurarescu/FitnessTrackingApp-for-Athletes/commit/0de6357ac22da14bce412f6c4626c59ebd3afab2) | commit history |
+
+## Stage 3: checklist
+ 
+| ID | Requirement | Where (permalink) | How to check |
+|---|---|---|---|
+| S3-R1 | npm run dev starts without errors | [package.json#L6-L11](https://github.com/uanamurarescu/FitnessTrackingApp-for-Athletes/blob/a29b48a5fe84de979cd8d64aa8fc5489807c63d1/frontend/package.json#L6-L11) | npm install, npm run dev |
+| S3-R2 | app name and counter computed from data | [App.jsx#L13-L22](https://github.com/uanamurarescu/FitnessTrackingApp-for-Athletes/blob/a29b48a5fe84de979cd8d64aa8fc5489807c63d1/frontend/src/App.jsx#L13-L22) | edit data, save |
+| S3-R3 | data from README, not from the example | [App.jsx#L1-L10](https://github.com/uanamurarescu/FitnessTrackingApp-for-Athletes/blob/a29b48a5fe84de979cd8d64aa8fc5489807c63d1/frontend/src/App.jsx#L1-L10) | compare with README |
+| S3-R4 | stage 1 styles reused | [frontend/src/App.css](https://github.com/uanamurarescu/FitnessTrackingApp-for-Athletes/blob/a29b48a5fe84de979cd8d64aa8fc5489807c63d1/frontend/src/App.css) | look at the page |
+| S3-R5 | node_modules ignored, build passes | [.gitignore#L10](https://github.com/uanamurarescu/FitnessTrackingApp-for-Athletes/blob/a29b48a5fe84de979cd8d64aa8fc5489807c63d1/frontend/.gitignore#L10) | npm run build |
+| S3-R6 | README Stage 3 section + AI log | [README.md#L35-L42](https://github.com/uanamurarescu/FitnessTrackingApp-for-Athletes/blob/a29b48a5fe84de979cd8d64aa8fc5489807c63d1/README.md#L35-L42), [etapa-03.md](https://github.com/uanamurarescu/FitnessTrackingApp-for-Athletes/blob/a29b48a5fe84de979cd8d64aa8fc5489807c63d1/ai-log/etapa-03.md) | read |
+| S3-R7 | commit "Stage 3" pushed | [a29b48a](https://github.com/uanamurarescu/FitnessTrackingApp-for-Athletes/commit/a29b48a5fe84de979cd8d64aa8fc5489807c63d1) | commit history |
