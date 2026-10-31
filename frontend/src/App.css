@@ -1,4 +1,3 @@
-
 .menu-btn {
   position: fixed;
   top: 1.6rem;
@@ -13,16 +12,28 @@
   width: 2.9rem;
   height: 0.38rem;
   border-radius: 0.2rem;
-  background: var(--green);
+  background: var(--menu-line);
   transition: background 0.2s;
 }
 .menu-btn:hover span { background: var(--cream); }
+
+
 .theme-toggle {
   position: fixed;
   top: 1.6rem;
-  right: 6rem;      
+  right: 6rem;
   z-index: 20;
+  padding: 0.45rem 1.1rem;
+  border: 1px solid var(--cream-soft);
+  border-radius: var(--radius-pill);
+  font-style: italic;
+  font-size: 1.1rem;
+  white-space: nowrap;
+  background: rgba(40, 10, 80, 0.55);
+  backdrop-filter: blur(6px);
+  transition: background 0.2s;
 }
+.theme-toggle:hover { background: rgba(40, 10, 80, 0.75); }
 
 
 
@@ -64,7 +75,7 @@
   gap: 0.25rem;
   padding: 0.5rem 0.9rem;
   border-radius: 0.75rem;
-  background: linear-gradient(90deg, #127259, #1c8a6c);
+  background: var(--date-chip);
   font-style: italic;
   font-size: 1.05rem;
   white-space: nowrap;
@@ -72,7 +83,7 @@
   transition: transform 0.15s, filter 0.15s;
 }
 .date-chip .material-symbols-rounded { font-size: 1.4rem; }
-.date-chip.prev { background: linear-gradient(90deg, #4fb06f, #0f5d50); }
+.date-chip.prev { background: var(--date-chip-prev); }
 .date-chip:hover { transform: translateY(-2px); filter: brightness(1.1); }
 
 .current-date {
@@ -99,7 +110,7 @@
   font-size: 7rem;
   line-height: 0.95;
   letter-spacing: -0.045em;
-  filter: drop-shadow(0 0.2rem 0.12rem rgba(0, 60, 40, 0.35));
+  filter: drop-shadow(0 0.2rem 0.12rem rgba(40, 10, 80, 0.35));
 }
 .greeting .hi,
 .greeting .name {
@@ -107,8 +118,8 @@
   -webkit-background-clip: text;
   color: transparent;
 }
-.greeting .hi   { background-image: linear-gradient(90deg, #1de9d0, #22d7e8); }
-.greeting .name { background-image: linear-gradient(90deg, #3ef07d, #1de9e0 70%); }
+.greeting .hi   { background-image: var(--grad-hi); }
+.greeting .name { background-image: var(--grad-name); }
 
 .shortcuts {
   display: flex;
@@ -151,14 +162,14 @@
   display: grid;
   place-items: center;
   transform: translate(-50%, -50%);
-  filter: drop-shadow(0 0.5rem 0.6rem rgba(20, 60, 120, 0.35));
+  filter: drop-shadow(0 0.5rem 0.6rem rgba(60, 20, 110, 0.35));
   transition: transform 0.2s;
 }
 .self-notes::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at 50% 50%, #7dff3a 0%, #22e0a0 30%, #14c8e8 55%, #1d7cf2 88%);
+  background: var(--grad-notes);
   -webkit-mask:
     radial-gradient(circle var(--r) at 30% 30%, #000 97%, transparent 100%),
     radial-gradient(circle var(--r) at 70% 30%, #000 97%, transparent 100%),
@@ -178,7 +189,7 @@
   font-size: 1.4rem;
   line-height: 1.35;
   text-align: center;
-  text-shadow: 0 0.06rem 0.2rem rgba(0, 60, 80, 0.4);
+  text-shadow: 0 0.06rem 0.2rem rgba(40, 10, 80, 0.45);
 }
 .self-notes:hover { transform: translate(-50%, -50%) scale(1.07); }
 
@@ -217,7 +228,7 @@
   align-items: center;
   padding: 1.1rem 2.5rem 1.1rem 1.4rem;
   border-radius: var(--radius-pill);
-  background: linear-gradient(90deg, var(--green) 0%, rgba(122, 111, 214, 0.85) 78%, rgba(139, 92, 246, 0) 100%);
+  background: var(--grad-macro);
   font-style: italic;
   font-size: 1.6rem;
   transition: transform 0.2s, filter 0.2s;

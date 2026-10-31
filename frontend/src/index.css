@@ -1,74 +1,108 @@
+
 :root {
-  
-  --cream: #fffbd8;
-  --cream-soft: rgba(255, 251, 216, 0.85);
-  --green: #5aae78;
-  --green-hover: #4c9f6b;
-  --green-text: #49ad6c;
-  --green-deep: #2f7d4f;
-  --teal: #4ec2c6;
-  --teal-hover: #38d6c5;
+  --cream: #fff4fb;
+  --cream-soft: rgba(255, 244, 251, 0.85);
+  --green: #b83e9e;         
+  --green-hover: #a5338c;
+  --green-text: #4c1c9f;    
+  --green-deep: #3a1280;    
+  --teal: #d05cb8;          
+  --teal-hover: #e97ad3;
   --ink: #2e2a45;
   --danger: #c0395a;
 
-  
-  --card: rgba(214, 234, 201, 0.92);
-  --card-soft: rgba(214, 234, 201, 0.88);
-  --panel: rgba(222, 222, 228, 0.92);
+  /* suprafete */
+  --card: rgba(253, 230, 248, 0.93);
+  --card-soft: rgba(253, 230, 248, 0.9);
+  --panel: rgba(243, 232, 252, 0.94);
+  --card-title: #b83e9e;               
+  --card-title-shadow: none;
+  --delete-bg: rgba(184, 62, 158, 0.15);
 
-  
-  --grad-page: linear-gradient(100deg, #55b972 0%, #649fa0 38%, #7a6fd6 70%, #8a5cf0 100%);
-  --grad-field: linear-gradient(90deg, #5fb37e, #9a7ee8);
-  --grad-accent: linear-gradient(145deg, #9b7cf2, #6b8fd0 60%, #58b98c);
+ 
+  --grad-page: linear-gradient(100deg, #4c1c9f 0%, #6b2bb4 35%, #a64bc2 68%, #e97ad3 100%);
+  --grad-field: linear-gradient(90deg, #4c1c9f, #b83e9e);
+  --grad-accent: linear-gradient(145deg, #e97ad3, #8a3cc0 60%, #4c1c9f);
+  --grad-hi: linear-gradient(90deg, #ffd3f3, #e97ad3);
+  --grad-name: linear-gradient(90deg, #e97ad3, #ffc2ef 70%);
+  --grad-notes: radial-gradient(circle at 50% 50%, #ffe0f7 0%, #e97ad3 32%, #b83e9e 60%, #4c1c9f 90%);
+  --grad-macro: linear-gradient(90deg, #4c1c9f 0%, rgba(184, 62, 158, 0.9) 78%, rgba(233, 122, 211, 0) 100%);
+  --date-chip: linear-gradient(90deg, #6b2bb4, #3a1280);
+  --date-chip-prev: linear-gradient(90deg, #b83e9e, #4c1c9f);
+  --menu-line: #e97ad3;
 
-  
+
+  --meal-1: #4c1c9f;
+  --meal-2: #6b2bb4;
+  --meal-3: #8a3cc0;
+  --meal-4: #b83e9e;
+  --meal-5: #c94cb0;
+  --meal-6: #d05cb8;
+  --navy: #4c1c9f;
+  --navy-soft: #9a86c4;
+
+ 
   --font-body: "Jost", system-ui, -apple-system, "Segoe UI", sans-serif;
   --font-head: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
 
-  
   --radius-xl: 2.4rem;
   --radius-lg: 2.1rem;
   --radius-md: 1rem;
   --radius-pill: 999px;
 
- 
-  --shadow-card: 0 0.4rem 1.1rem rgba(30, 60, 40, 0.15);
-  --shadow-panel: 0 0.5rem 1.25rem rgba(40, 30, 80, 0.18);
-  --shadow-pill: 0 0.25rem 0.6rem rgba(30, 70, 50, 0.2);
-  --title-shadow: 0 0.2rem 0.2rem rgba(60, 50, 90, 0.35);
+
+  --shadow-card: 0 0.4rem 1.1rem rgba(60, 20, 110, 0.18);
+  --shadow-panel: 0 0.5rem 1.25rem rgba(50, 20, 100, 0.22);
+  --shadow-pill: 0 0.25rem 0.6rem rgba(60, 20, 110, 0.22);
+  --title-shadow: 0 0.2rem 0.2rem rgba(40, 10, 80, 0.4);
 
   --tag-hover: var(--cream);
+  --title-star: var(--card);           
 }
 
 
-/* Tema intunecata a sistemului, daca utilizatorul nu a ales explicit tema luminoasa din buton */
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
     color-scheme: dark;
 
-    --cream-soft: rgba(255, 251, 216, 0.7);
-    --green: #3f8f5c;
-    --green-hover: #4fa36d;
-    --green-text: #8fdca9;
-    --green-deep: #d2f2dc;
-    --teal: #2f8f93;
-    --teal-hover: #37a5a8;
+    --cream-soft: rgba(255, 244, 251, 0.7);
+    --green: #8a2f7a;
+    --green-hover: #a23a8f;
+    --green-text: #f2b6e6;
+    --green-deep: #fde6f8;
+    --teal: #7b2f8f;
+    --teal-hover: #93399f;
     --ink: #ece9f7;
     --danger: #ff8aa2;
 
-    --card: rgba(34, 52, 44, 0.92);
-    --card-soft: rgba(34, 52, 44, 0.88);
-    --panel: rgba(36, 33, 58, 0.94);
+    --card: rgba(48, 26, 82, 0.92);
+    --card-soft: rgba(48, 26, 82, 0.88);
+    --panel: rgba(38, 22, 66, 0.94);
+    --card-title: #ffd3f3;
+    --card-title-shadow: 0 0.12rem 0.12rem rgba(0, 0, 0, 0.45);
+    --delete-bg: rgba(233, 122, 211, 0.18);
 
-    --grad-page: linear-gradient(100deg, #10291b 0%, #15303a 38%, #211c47 70%, #29154f 100%);
-    --grad-field: linear-gradient(90deg, #3a8456, #6c55c2);
+    --grad-page: linear-gradient(100deg, #170936 0%, #220d4a 40%, #34124f 72%, #4a1747 100%);
+    --grad-field: linear-gradient(90deg, #3a1280, #8a2f7a);
+    --grad-macro: linear-gradient(90deg, #4c1c9f 0%, rgba(138, 47, 122, 0.9) 78%, rgba(138, 47, 122, 0) 100%);
+    --date-chip: linear-gradient(90deg, #4c1c9f, #2a0f5c);
+    --date-chip-prev: linear-gradient(90deg, #8a2f7a, #3a1280);
+
+    --meal-1: #5b25b8;
+    --meal-2: #7333c4;
+    --meal-3: #8f3fc6;
+    --meal-4: #a8399a;
+    --meal-5: #b8459f;
+    --meal-6: #c4529f;
+    --navy: #5b25b8;
 
     --shadow-card: 0 0.4rem 1.1rem rgba(0, 0, 0, 0.35);
     --shadow-panel: 0 0.5rem 1.25rem rgba(0, 0, 0, 0.4);
     --shadow-pill: 0 0.25rem 0.6rem rgba(0, 0, 0, 0.35);
     --title-shadow: 0 0.2rem 0.3rem rgba(0, 0, 0, 0.5);
 
-    --tag-hover: rgba(52, 78, 64, 0.95);
+    --tag-hover: rgba(80, 40, 120, 0.95);
+    --title-star: rgba(233, 122, 211, 0.35);
   }
 }
 
@@ -76,29 +110,44 @@
 :root[data-theme="dark"] {
   color-scheme: dark;
 
-  --cream-soft: rgba(255, 251, 216, 0.7);
-  --green: #3f8f5c;
-  --green-hover: #4fa36d;
-  --green-text: #8fdca9;
-  --green-deep: #d2f2dc;
-  --teal: #2f8f93;
-  --teal-hover: #37a5a8;
+  --cream-soft: rgba(255, 244, 251, 0.7);
+  --green: #8a2f7a;
+  --green-hover: #a23a8f;
+  --green-text: #f2b6e6;
+  --green-deep: #fde6f8;
+  --teal: #7b2f8f;
+  --teal-hover: #93399f;
   --ink: #ece9f7;
   --danger: #ff8aa2;
 
-  --card: rgba(34, 52, 44, 0.92);
-  --card-soft: rgba(34, 52, 44, 0.88);
-  --panel: rgba(36, 33, 58, 0.94);
+  --card: rgba(48, 26, 82, 0.92);
+  --card-soft: rgba(48, 26, 82, 0.88);
+  --panel: rgba(38, 22, 66, 0.94);
+  --card-title: #ffd3f3;
+  --card-title-shadow: 0 0.12rem 0.12rem rgba(0, 0, 0, 0.45);
+  --delete-bg: rgba(233, 122, 211, 0.18);
 
-  --grad-page: linear-gradient(100deg, #10291b 0%, #15303a 38%, #211c47 70%, #29154f 100%);
-  --grad-field: linear-gradient(90deg, #3a8456, #6c55c2);
+  --grad-page: linear-gradient(100deg, #170936 0%, #220d4a 40%, #34124f 72%, #4a1747 100%);
+  --grad-field: linear-gradient(90deg, #3a1280, #8a2f7a);
+  --grad-macro: linear-gradient(90deg, #4c1c9f 0%, rgba(138, 47, 122, 0.9) 78%, rgba(138, 47, 122, 0) 100%);
+  --date-chip: linear-gradient(90deg, #4c1c9f, #2a0f5c);
+  --date-chip-prev: linear-gradient(90deg, #8a2f7a, #3a1280);
+
+  --meal-1: #5b25b8;
+  --meal-2: #7333c4;
+  --meal-3: #8f3fc6;
+  --meal-4: #a8399a;
+  --meal-5: #b8459f;
+  --meal-6: #c4529f;
+  --navy: #5b25b8;
 
   --shadow-card: 0 0.4rem 1.1rem rgba(0, 0, 0, 0.35);
   --shadow-panel: 0 0.5rem 1.25rem rgba(0, 0, 0, 0.4);
   --shadow-pill: 0 0.25rem 0.6rem rgba(0, 0, 0, 0.35);
   --title-shadow: 0 0.2rem 0.3rem rgba(0, 0, 0, 0.5);
 
-  --tag-hover: rgba(52, 78, 64, 0.95);
+  --tag-hover: rgba(80, 40, 120, 0.95);
+  --title-star: rgba(233, 122, 211, 0.35);
 }
 
 
@@ -156,7 +205,7 @@ button {
   top: 50%;
   font-size: 2.2em;
   line-height: 1;
-  color: var(--card);
+  color: var(--title-star);
   text-shadow: none;
   transform: translateY(-50%) rotate(12deg);
   pointer-events: none;
@@ -260,8 +309,8 @@ button {
   font-size: 2.6rem;
   letter-spacing: -0.06em;
   line-height: 1.05;
-  color: var(--cream);
-  text-shadow: 0 0.12rem 0.12rem rgba(80, 90, 70, 0.45);
+  color: var(--card-title);
+  text-shadow: var(--card-title-shadow);
 }
 .stat-big {
   display: flex;

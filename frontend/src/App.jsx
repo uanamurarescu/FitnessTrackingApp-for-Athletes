@@ -2,6 +2,7 @@ import { useState , useEffect } from "react";
 import FoodTrackList from "./components/Food_TrackList.jsx";
 import FoodAddForm from "./components/Food_AddForm.jsx";
 import WorkoutLogList from "./components/Exercises_LogList.jsx";
+import { DAILY_GOALS, sumMacros, kcalFrom, unknownFoods } from "./components/nutrition.js";
 import "./App.css";
 
 const initialFoods = [
@@ -47,6 +48,54 @@ const initialWorkouts = [
   { id: 22, exercises: "Calf Raise",                 volume: "3x10", split: "LegsWorkout", done: false },
 ];
 
+
+function addDays(date, n) {
+  const d = new Date(date);
+  d.setDate(d.getDate() + n);
+  return d;
+}
+
+
+function shortDate(date) {
+  const day = String(date.getDate()).padStart(2, "0");
+  const month = String(date.getMonth() + 1).padStart(2, "0");
+  return `${day}/${month}`;
+}
+
+
+function longDate(date) {
+  return date.toLocaleDateString("en-GB", { day: "2-digit", month: "long", year: "numeric" });
+}
+
+
+function dateKey(date) {
+  const month = String(date.getMonth() + 1).padStart(2, "0");
+  const day = String(date.getDate()).padStart(2, "0");
+  return `${date.getFullYear()}-${month}-${day}`;
+}
+
+
+function withDate(lista, key) {
+  return lista.map((e) => (e.date ? e : { ...e, date: key }));
+}
+
+
+const MACRO_BARS = [
+  { key: "carbs", label: "carbs.", table: "NutritionalValues.Carbs" },
+  { key: "protein", label: "protein.", table: "NutritionalValues.Protein" },
+  { key: "fats", label: "fats.", table: "NutritionalValues.Fats" },
+];
+
+
+const EMPTY_DAY = { steps: 0, waterMl: 0 };
+const STEPS_GOAL = 10000;
+const WATER_GOAL_ML = 4000;
+
+
+function formatLiters(ml) {
+  return `${Number((ml / 1000).toFixed(2))} L`;
+}
+
 function temaInitiala() {
   return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
 }
@@ -73,30 +122,46 @@ function deleteFood(lista, id) {
 }
 
 export default function App() {
-  const [foods, setFoods] = useState(() => {
-    try {
-      const memorizeDeleted = localStorage.getItem("foods");
-      return memorizeDeleted ? JSON.parse(memorizeDeleted) : initialFoods;
-    } catch {
-      return initialFoods;
-    }
-  });
+  const [selectedDate, setSelectedDate] = useState(() => new Date());
+  const prevDay = addDays(selectedDate, -1);
+  const nextDay = addDays(selectedDate, 1);
+  const dayKey = dateKey(selectedDate);
+
+  function goToPrevDay() {
+    setSelectedDate((prev) => addDays(prev, -1));
+  }
+
+  function goToNextDay() {
+    setSelectedDate((prev) => addDays(prev, 1));
+  }
+
+
+  const [foods, setFoods] = useState(() =>
+    withDate(loadList("foods", initialFoods), dateKey(new Date()))
+  );
+
   useEffect(() => {
     try {
       localStorage.setItem("foods", JSON.stringify(foods));
     } catch {
+      // stocare indisponibila
     }
   }, [foods]);
-  const totalGrams = foods.reduce((sum, e) => sum + e.quantity, 0);
+
+
   function addMeal(food) {
-    setFoods((prev) => addFood(prev, food));
+    setFoods((prev) => addFood(prev, { ...food, date: dayKey }));
   }
+
   function deleteMeal(id) {
     setFoods((prev) => deleteFood(prev, id));
   }
 
 
-  const [workouts, setWorkouts] = useState(() => loadList("workouts", initialWorkouts));
+  const [workouts, setWorkouts] = useState(() =>
+    withDate(loadList("workouts", initialWorkouts), dateKey(new Date()))
+  );
+
   useEffect(() => {
     try {
       localStorage.setItem("workouts", JSON.stringify(workouts));
@@ -104,16 +169,64 @@ export default function App() {
       // stocare indisponibila
     }
   }, [workouts]);
+
+
   function addWorkout(workout) {
-    setWorkouts((prev) => [...prev, { id: nextId(prev), done: false, ...workout }]);
+    setWorkouts((prev) => [...prev, { id: nextId(prev), done: false, date: dayKey, ...workout }]);
   }
+
   function toggleWorkout(id) {
     setWorkouts((prev) =>
       prev.map((w) => (w.id === id ? { ...w, done: !w.done } : w))
     );
   }
+
   function deleteWorkout(id) {
     setWorkouts((prev) => prev.filter((w) => w.id !== id));
+  }
+
+  const [dailyLog, setDailyLog] = useState(() =>
+    loadList("dailyLog", { [dateKey(new Date())]: { steps: 15000, waterMl: 4000 } })
+  );
+
+  useEffect(() => {
+    try {
+      localStorage.setItem("dailyLog", JSON.stringify(dailyLog));
+    } catch {
+      // stocare indisponibila
+    }
+  }, [dailyLog]);
+
+
+  function changeWater(deltaMl) {
+    setDailyLog((prev) => {
+      const current = prev[dayKey] ?? EMPTY_DAY;
+      return { ...prev, [dayKey]: { ...current, waterMl: Math.max(current.waterMl + deltaMl, 0) } };
+    });
+  }
+
+  function changeSteps(steps) {
+    setDailyLog((prev) => {
+      const current = prev[dayKey] ?? EMPTY_DAY;
+      return { ...prev, [dayKey]: { ...current, steps } };
+    });
+  }
+
+
+  const day = dailyLog[dayKey] ?? EMPTY_DAY;
+  const dayFoods = foods.filter((f) => f.date === dayKey);
+  const dayWorkouts = workouts.filter((w) => w.date === dayKey);
+
+  const macros = sumMacros(dayFoods);
+  const kcalEaten = Math.round(kcalFrom(macros));
+  const kcalGoal = kcalFrom(DAILY_GOALS);
+  const kcalLeft = Math.max(kcalGoal - kcalEaten, 0);
+  const missingNutrition = unknownFoods(dayFoods).length;
+
+
+  function barWidth(key) {
+    const progress = Math.min(macros[key] / DAILY_GOALS[key], 1);
+    return `${Math.round(40 + 60 * progress)}%`;
   }
 
   const [tema, setTema] = useState(temaInitiala);
@@ -139,13 +252,23 @@ export default function App() {
       
         <section className="left-col" aria-label="Daily summary">
           <nav className="date-nav" aria-label="Date navigation">
-            <button type="button" className="date-chip prev" aria-label="Previous day">
+            <button
+              type="button"
+              className="date-chip prev"
+              onClick={goToPrevDay}
+              aria-label={`Previous day, ${longDate(prevDay)}`}
+            >
               <span className="material-symbols-rounded" aria-hidden="true">chevron_left</span>
-              <span>22/10</span>
+              <span>{shortDate(prevDay)}</span>
             </button>
-            <h2 className="current-date">23 October 2026</h2>
-            <button type="button" className="date-chip next" aria-label="Next day">
-              <span>24/10</span>
+            <h2 className="current-date">{longDate(selectedDate)}</h2>
+            <button
+              type="button"
+              className="date-chip next"
+              onClick={goToNextDay}
+              aria-label={`Next day, ${longDate(nextDay)}`}
+            >
+              <span>{shortDate(nextDay)}</span>
               <span className="material-symbols-rounded" aria-hidden="true">chevron_right</span>
             </button>
           </nav>
@@ -172,15 +295,15 @@ export default function App() {
               <h3>Steps</h3>
               <p className="stat-big">
                 <span className="material-symbols-rounded" aria-hidden="true">directions_walk</span>
-                <span>15000</span>
+                <span>{day.steps}</span>
               </p>
             </article>
  
             <article className="stat-card calories" data-table="DailyLog.CaloriesEaten">
               <h3>Calories</h3>
-              <p className="stat-line">eaten : <b>1800</b></p>
+              <p className="stat-line">eaten : <b>{kcalEaten}</b></p>
               <p className="stat-line">
-                left : <b>260</b>
+                left : <b>{kcalLeft}</b>
                 <span className="material-symbols-rounded" aria-hidden="true">rice_bowl</span>
               </p>
             </article>
@@ -188,7 +311,7 @@ export default function App() {
             <article className="stat-card water" data-table="DailyLog.WaterIntake">
               <h3>Water<br />intake</h3>
               <div className="water-row">
-                <p className="stat-value">4 L</p>
+                <p className="stat-value">{formatLiters(day.waterMl)}</p>
                 <span className="material-symbols-rounded water-icon" aria-hidden="true">water_bottle</span>
               </div>
             </article>
@@ -219,18 +342,27 @@ export default function App() {
           </div>
  
           <div className="macros">
-            <button type="button" className="macro" style={{ "--w": "100%" }} data-table="NutritionalValues.Carbs">
-              <span>carbs.</span><b>250</b>
-            </button>
-            <button type="button" className="macro" style={{ "--w": "82%" }} data-table="NutritionalValues.Protein">
-              <span>protein.</span><b>130</b>
-            </button>
-            <button type="button" className="macro" style={{ "--w": "64%" }} data-table="NutritionalValues.Fats">
-              <span>fats.</span><b>60</b>
-            </button>
-            <button type="button" className="kcal-line" data-table="FoodTracker" aria-label="Total calories: 2060 kcal">
+            {MACRO_BARS.map((bar) => (
+              <button
+                key={bar.key}
+                type="button"
+                className="macro"
+                style={{ "--w": barWidth(bar.key) }}
+                data-table={bar.table}
+                aria-label={`${bar.label} ${Math.round(macros[bar.key])} of ${DAILY_GOALS[bar.key]} g`}
+              >
+                <span>{bar.label}</span><b>{Math.round(macros[bar.key])}</b>
+              </button>
+            ))}
+            <button
+              type="button"
+              className="kcal-line"
+              data-table="FoodTracker"
+              aria-label={`Total calories: ${kcalEaten} of ${kcalGoal} kcal`}
+              title={missingNutrition ? `${missingNutrition} food(s) without nutrition data are not counted` : undefined}
+            >
               <span className="spark" aria-hidden="true">✦</span>
-              <span className="kcal-text">2060 kcal</span>
+              <span className="kcal-text">{kcalEaten} kcal</span>
             </button>
           </div>
         </section>
@@ -263,13 +395,22 @@ export default function App() {
       </main>
  
       
-      <FoodTrackList foods={foods} onDelete={deleteMeal} />
+      <FoodTrackList
+        foods={dayFoods}
+        onDelete={deleteMeal}
+        waterMl={day.waterMl}
+        waterGoalMl={WATER_GOAL_ML}
+        onWaterChange={changeWater}
+      />
 
       <WorkoutLogList
-        workouts={workouts}
+        workouts={dayWorkouts}
         onAdd={addWorkout}
         onToggle={toggleWorkout}
         onDelete={deleteWorkout}
+        steps={day.steps}
+        stepsGoal={STEPS_GOAL}
+        onStepsChange={changeSteps}
       />
  
       <footer className="site-footer">"Web Technology Project" - Fitness Tracking App</footer>

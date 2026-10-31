@@ -1,4 +1,3 @@
-
 .tracker {
   display: grid;
   grid-template-columns: auto 1fr;
@@ -86,12 +85,13 @@
   align-items: start;
 }
 
-.meal-col--breakfast { --meal: var(--green); }
-.meal-col--lunch     { --meal: #3fa7a8; }
-.meal-col--dinner    { --meal: #7a6fd6; }
-.meal-col--snack-1   { --meal: #9b7cf2; }
-.meal-col--snack-2   { --meal: #b07ae6; }
-.meal-col--snack-3   { --meal: #c47bd8; }
+
+.meal-col--breakfast { --meal: var(--meal-1); }
+.meal-col--lunch     { --meal: var(--meal-2); }
+.meal-col--dinner    { --meal: var(--meal-3); }
+.meal-col--snack-1   { --meal: var(--meal-4); }
+.meal-col--snack-2   { --meal: var(--meal-5); }
+.meal-col--snack-3   { --meal: var(--meal-6); }
 
 .meal-col {
   display: flex;
@@ -182,12 +182,88 @@
   width: 2rem;
   height: 2rem;
   border-radius: 50%;
-  background: rgba(90, 174, 120, 0.2);
+  background: var(--delete-bg);
   color: var(--green-text);
   transition: background 0.2s, color 0.2s;
 }
 .food-delete .material-symbols-rounded { font-size: 1.3rem; }
 .food-delete:hover { background: var(--danger); color: var(--cream); }
+
+
+
+.water-box {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 1rem 1.8rem;
+  margin-top: 1.6rem;
+  padding: 1rem 1.4rem;
+  border-radius: 1.4rem;
+  background: var(--card);
+  color: var(--green-text);
+  box-shadow: var(--shadow-card);
+}
+
+.water-head {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+}
+
+.water-title {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin: 0;
+  font-family: var(--font-head);
+  font-weight: 800;
+  font-size: 1.55rem;
+  letter-spacing: -0.04em;
+  color: var(--card-title);
+}
+.water-title .material-symbols-rounded { font-size: 1.8rem; }
+
+.water-amount {
+  margin: 0;
+  font-style: italic;
+  font-size: 1.3rem;
+  white-space: nowrap;
+}
+.water-amount b { font-size: 1.6rem; color: var(--green-deep); }
+
+.water-bar {
+  height: 1rem;
+  border-radius: var(--radius-pill);
+  background: color-mix(in srgb, var(--green-text) 15%, transparent);
+  overflow: hidden;
+}
+.water-fill {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: var(--grad-field);
+  transition: width 0.3s;
+}
+
+.water-buttons {
+  display: flex;
+  gap: 0.6rem;
+}
+
+.water-btn {
+  padding: 0.5rem 1.1rem;
+  border-radius: var(--radius-pill);
+  background: var(--green);
+  color: var(--cream);
+  font-size: 1.15rem;
+  white-space: nowrap;
+  box-shadow: var(--shadow-pill);
+  transition: background 0.2s, transform 0.2s;
+}
+.water-btn:hover { background: var(--green-hover); transform: translateY(-2px); }
+.water-btn--minus { background: transparent; color: var(--green-text); box-shadow: inset 0 0 0 2px var(--green); }
+.water-btn--minus:hover { background: var(--delete-bg); }
+.water-btn:disabled { opacity: 0.45; cursor: not-allowed; transform: none; }
 
 
 
@@ -204,4 +280,21 @@
 
   .food-panel { padding: 1rem 1rem 2rem; }
   .meal-columns { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+
+@media (max-width: 1100px) {
+  .water-box {
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-areas: "head buttons" "bar bar";
+  }
+  .water-head    { grid-area: head; }
+  .water-buttons { grid-area: buttons; }
+  .water-bar     { grid-area: bar; }
+}
+
+@media (max-width: 600px) {
+  .water-box { grid-template-columns: minmax(0, 1fr); grid-template-areas: "head" "bar" "buttons"; }
+  .water-buttons { justify-content: space-between; }
+  .water-btn { flex: 1; }
 }

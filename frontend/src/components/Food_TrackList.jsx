@@ -1,4 +1,5 @@
 import FoodTrackCard from "./Food_TrackCard.jsx";
+import FoodWaterIntake from "./Food_WaterIntake.jsx";
 import "./Food_Tracker.css";
 import { MEAL_OPTIONS } from "./Food_AddForm.jsx";
 
@@ -6,7 +7,7 @@ function toClassName(value) {
   return String(value).toLowerCase().replace(/\s+/g, "-");
 }
 
-export default function FoodTrackList({ foods, onDelete }) {
+export default function FoodTrackList({ foods, onDelete, waterMl, waterGoalMl, onWaterChange }) {
   const totalGrams = foods.reduce((sum, e) => sum + e.quantity, 0);
  
   return (
@@ -52,7 +53,10 @@ export default function FoodTrackList({ foods, onDelete }) {
           );
         })}
       </div>
+
+      <FoodWaterIntake waterMl={waterMl} goalMl={waterGoalMl} onChange={onWaterChange} />
     </section>
   );
  
 }
+ 

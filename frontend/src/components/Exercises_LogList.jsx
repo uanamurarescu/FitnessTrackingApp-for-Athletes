@@ -1,8 +1,9 @@
 import WorkoutLogCard from "./Exercises_LogCard.jsx";
 import WorkoutAddForm, { SPLIT_OPTIONS } from "./Exercises_AddForm.jsx";
+import ExercisesSteps from "./Exercises_Steps.jsx";
 import "./Exercises_Log.css";
 
-export default function WorkoutLogList({ workouts, onAdd, onToggle, onDelete }) {
+export default function WorkoutLogList({ workouts, onAdd, onToggle, onDelete, steps, stepsGoal, onStepsChange }) {
   const left = workouts.filter((w) => !w.done).length;
 
   return (
@@ -54,6 +55,8 @@ export default function WorkoutLogList({ workouts, onAdd, onToggle, onDelete }) 
             </section>
           );
         })}
+
+        <ExercisesSteps steps={steps} goal={stepsGoal} onChange={onStepsChange} />
       </div>
     </section>
   );

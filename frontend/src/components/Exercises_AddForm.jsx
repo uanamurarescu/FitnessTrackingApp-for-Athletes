@@ -17,7 +17,6 @@ export default function WorkoutAddForm({ onAdd }) {
     event.preventDefault();
 
     const clearName = exercise.trim();
-    // "3 x 10" sau "3X10" devin "3x10"
     const clearVolume = volume.replace(/\s+/g, "").toLowerCase();
 
     if (clearName === "") {
