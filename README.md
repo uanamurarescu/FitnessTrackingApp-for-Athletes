@@ -69,3 +69,14 @@ The food tracker is rendered from the data, through three components. The data l
 | S1-R7 | visible focus, readable dark theme | [style.css#L185-L188](https://github.com/uanamurarescu/FitnessTrackingApp-for-Athletes/blob/6364b9534277da60389c6ec7ba2d5d5992e195c4/frontend/static/styles/style.css#L185-L188) (:focus-visible), [style.css#L196-L205](https://github.com/uanamurarescu/FitnessTrackingApp-for-Athletes/blob/6364b9534277da60389c6ec7ba2d5d5992e195c4/frontend/static/styles/style.css#L196-L205) (dark theme) | Tab; dark mode |
 | S1-R8 | commit "Stage 1" pushed | [ac4655a](https://github.com/uanamurarescu/FitnessTrackingApp-for-Athletes/commit/ac4655aae38d07045cfdd7c2eafd81e2738d7975), [55c6240](https://github.com/uanamurarescu/FitnessTrackingApp-for-Athletes/commit/55c62405abd6829893cd4877ce8789d541a80549) | commit history |
 
+## Stage 2: checklist
+ 
+| ID | Requirement | Where (permalink) | How to check |
+|---|---|---|---|
+| S2-R1 | JS file linked, logs on page load | [index.html#L160](https://github.com/uanamurarescu/FitnessTrackingApp-for-Athletes/blob/b5a0a1c7451b8a0326f8466cfd109de4f069c334/frontend/static/index.html#L160) (script) | open page, F12 |
+| S2-R2 | 3+ items with id, name, state, tag | [exercises.js#L7-L12](https://github.com/uanamurarescu/FitnessTrackingApp-for-Athletes/blob/b5a0a1c7451b8a0326f8466cfd109de4f069c334/frontend/static/exercises.js#L7-L12) (no state field) | read |
+| S2-R3 | list, count, search, add, toggle, delete | [exercises.js#L14-L46](https://github.com/uanamurarescu/FitnessTrackingApp-for-Athletes/blob/b5a0a1c7451b8a0326f8466cfd109de4f069c334/frontend/static/exercises.js#L14-L46) (no toggle function) | console output |
+| S2-R4 | add rejects empty name and invalid tag | [exercises.js#L30-L39](https://github.com/uanamurarescu/FitnessTrackingApp-for-Athletes/blob/b5a0a1c7451b8a0326f8466cfd109de4f069c334/frontend/static/exercises.js#L30-L39), [exercises.js#L61-L63](https://github.com/uanamurarescu/FitnessTrackingApp-for-Athletes/blob/b5a0a1c7451b8a0326f8466cfd109de4f069c334/frontend/static/exercises.js#L61-L63) (tag check inverted) | last 2 console lines |
+| S2-R5 | original array unchanged after add | [exercises.js#L55](https://github.com/uanamurarescu/FitnessTrackingApp-for-Athletes/blob/b5a0a1c7451b8a0326f8466cfd109de4f069c334/frontend/static/exercises.js#L55) | console line |
+| S2-R6 | README Stage 2 section + AI log | [README.md#L32-L34](https://github.com/uanamurarescu/FitnessTrackingApp-for-Athletes/blob/b5a0a1c7451b8a0326f8466cfd109de4f069c334/README.md#L32-L34), [etapa-02.md](https://github.com/uanamurarescu/FitnessTrackingApp-for-Athletes/blob/b5a0a1c7451b8a0326f8466cfd109de4f069c334/ai-log/etapa-02.md) | read |
+| S2-R7 | commit "Stage 2" pushed | [0de6357](https://github.com/uanamurarescu/FitnessTrackingApp-for-Athletes/commit/0de6357ac22da14bce412f6c4626c59ebd3afab2) | commit history |
