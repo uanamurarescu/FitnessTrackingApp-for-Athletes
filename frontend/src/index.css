@@ -38,8 +38,8 @@
   --meal-4: #b83e9e;
   --meal-5: #c94cb0;
   --meal-6: #d05cb8;
-  --navy: #4c1c9f;
-  --navy-soft: #9a86c4;
+  --purple: #4c1c9f;
+  --purple-soft: #9a86c4;
 
  
   --font-body: "Jost", system-ui, -apple-system, "Segoe UI", sans-serif;
@@ -94,7 +94,7 @@
     --meal-4: #a8399a;
     --meal-5: #b8459f;
     --meal-6: #c4529f;
-    --navy: #5b25b8;
+    --purple: #5b25b8;
 
     --shadow-card: 0 0.4rem 1.1rem rgba(0, 0, 0, 0.35);
     --shadow-panel: 0 0.5rem 1.25rem rgba(0, 0, 0, 0.4);
@@ -139,7 +139,7 @@
   --meal-4: #a8399a;
   --meal-5: #b8459f;
   --meal-6: #c4529f;
-  --navy: #5b25b8;
+  --purple: #5b25b8;
 
   --shadow-card: 0 0.4rem 1.1rem rgba(0, 0, 0, 0.35);
   --shadow-panel: 0 0.5rem 1.25rem rgba(0, 0, 0, 0.4);
@@ -370,7 +370,7 @@ button {
 .select-wrap { position: relative; }
 .select-wrap select { appearance: none; -webkit-appearance: none; cursor: pointer; padding-right: 3.1rem; }
 .select-wrap select:invalid { color: var(--cream-soft); }
-.select-wrap option { color: var(--ink); }
+.select-wrap option { color: var(--purple); background: #fff; }
 .select-wrap .material-symbols-rounded {
   position: absolute;
   right: 1rem;
@@ -387,7 +387,7 @@ button {
   html { font-size: 14px; }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 700px) {
   html { font-size: 12px; }
 
   .stat-card { min-height: 12rem; padding: 1.2rem; border-radius: 1.9rem; }

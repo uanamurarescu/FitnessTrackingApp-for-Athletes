@@ -1,7 +1,7 @@
 import "./Food_Tracker.css";
 
 
-const WATER_AMOUNTS = [-250, 250, 500, 750, 1000];
+const WATER_AMOUNTS = [-250, 250, 500, 750];
 
 function toLiters(ml) {
   return Number((ml / 1000).toFixed(2));

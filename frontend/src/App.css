@@ -306,7 +306,7 @@
   .left-col { max-width: none; }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 700px) {
   .dashboard { padding: 4.5rem 1rem 2rem; }
 
   .date-nav { gap: 0.5rem; }
