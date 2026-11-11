@@ -3,6 +3,8 @@ import FoodTrackList from "./components/Food_TrackList.jsx";
 import FoodAddForm from "./components/Food_AddForm.jsx";
 import WorkoutLogList from "./components/Exercises_LogList.jsx";
 import { DAILY_GOALS, sumMacros, kcalFrom, unknownFoods } from "./components/nutrition.js";
+import SupplementsList from "./components/Supplements_List.jsx";
+import { fetchSupplements } from "./api.js";
 import "./App.css";
 
 const initialFoods = [
@@ -123,6 +125,33 @@ function deleteFood(lista, id) {
 
 export default function App() {
   const [selectedDate, setSelectedDate] = useState(() => new Date());
+  
+  const [supplements, setSupplements] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    let ignore = false;
+    async function load() {
+      try {
+        const data = await fetchSupplements();
+        if (!ignore) setSupplements(data);
+      } catch (err) {
+        if (!ignore) setError(err.message);
+      } finally {
+        if (!ignore) setLoading(false);
+      }
+    }
+    load();
+    return () => { ignore = true; };
+  }, []);
+
+    function toggleSupplement(id) {
+      setSupplements((prev) =>
+    prev.map((s) => (s.id === id ? { ...s, taken: !s.taken } : s))
+  );
+}
+
   const prevDay = addDays(selectedDate, -1);
   const nextDay = addDays(selectedDate, 1);
   const dayKey = dateKey(selectedDate);
@@ -394,7 +423,8 @@ export default function App() {
         </section>
       </main>
  
-      
+      <SupplementsList supplements={supplements} loading={loading} error={error} onToggle={toggleSupplement}/>
+
       <FoodTrackList
         foods={dayFoods}
         onDelete={deleteMeal}

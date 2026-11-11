@@ -65,6 +65,11 @@ New components added in this stage:
 - `nutrition.js` – the nutrition values per 100 g and the functions that add up the macros and calories.
 
 All updates are immutable (`map`, `filter`, spread), never `push` or direct assignment. The data is saved in `localStorage`, so it stays after a refresh in the same browser. Stage 6 will load it from an API and stage 10 will store it in the database.
+## Stage 6: data from a mock API
+The daily supplements list is served by json-server from `db.json`. The app
+fetches it on load and shows a loading state and an error state.
+    npm run api   # terminal 1, http://localhost:3001
+    npm run dev   # terminal 2, http://localhost:5173
 
 
 
@@ -74,7 +79,9 @@ All updates are immutable (`map`, `filter`, spread), never `push` or direct assi
 - [x] Stage 3: Vite & React
 - [x] Stage 4: components rendered from data
 - [x] Stage 5: local state and events
-- [ ] Stage 6: loading data from a mock API
+- [x] Stage 6: data from a mock API
+- [ ] Stage 7: form and validation
+
 
 
 ## Stage 1: checklist
