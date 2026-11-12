@@ -1,0 +1,6 @@
+{
+  "resource": "supplements",
+  "title": "name",
+  "done": "taken",
+  "sample": { "dose": "5 g", "mealLog": "lunch" }
+}

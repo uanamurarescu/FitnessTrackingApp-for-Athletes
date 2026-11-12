@@ -1,10 +1,25 @@
 {
   "supplements": [
-    { "id": 1, "name": "Vitamin D3", "dose": "2000 IU", "mealLog": "breakfast", "taken": true },
-    { "id": 2, "name": "Omega-3 fish oil", "dose": "1000 mg", "mealLog": "breakfast", "taken": true },
-    { "id": 3, "name": "Creatine monohydrate", "dose": "5 g", "mealLog": "snack 1", "taken": false },
-    { "id": 4, "name": "Vitamin C", "dose": "500 mg", "mealLog": "lunch", "taken": true },
-    { "id": 5, "name": "Zinc", "dose": "15 mg", "mealLog": "dinner", "taken": false },
-    { "id": 6, "name": "Magnesium bisglycinate", "dose": "400 mg", "mealLog": "dinner", "taken": false }
+    {
+      "name": "creatine",
+      "dose": "6 g",
+      "mealLog": "breakfast",
+      "taken": true,
+      "id": 1
+    },
+    {
+      "name": "magnesium bisglycinate",
+      "dose": "400mg",
+      "mealLog": "dinner",
+      "taken": false,
+      "id": 2
+    },
+    {
+      "name": "magnesium",
+      "dose": "400 mg",
+      "mealLog": "lunch",
+      "taken": true,
+      "id": 3
+    }
   ]
 }

@@ -70,7 +70,10 @@ The daily supplements list is served by json-server from `db.json`. The app
 fetches it on load and shows a loading state and an error state.
     npm run api   # terminal 1, http://localhost:3001
     npm run dev   # terminal 2, http://localhost:5173
-
+## Stage 7: form and validation
+Supplements can be added from the page. The form is controlled and validated,
+and every change (add, toggle, delete) goes to the API before it shows up
+in the list.
 
 
 ## Status
@@ -80,7 +83,8 @@ fetches it on load and shows a loading state and an error state.
 - [x] Stage 4: components rendered from data
 - [x] Stage 5: local state and events
 - [x] Stage 6: data from a mock API
-- [ ] Stage 7: form and validation
+- [x] Stage 7: form and validation
+- [ ] Stage 8: routing and detail page
 
 
 
@@ -145,3 +149,15 @@ fetches it on load and shows a loading state and an error state.
 | S5-R6 | light / dark toggle: state + data-theme on html | [App.jsx#L119-L124](https://github.com/uanamurarescu/FitnessTrackingApp-for-Athletes/blob/7f9621472c200b201e315115b7315b99f1fbfbd5/frontend/src/App.jsx#L119-L124), [App.jsx#L134-L136](https://github.com/uanamurarescu/FitnessTrackingApp-for-Athletes/blob/7f9621472c200b201e315115b7315b99f1fbfbd5/frontend/src/App.jsx#L134-L136), [index.css#L45-L102](https://github.com/uanamurarescu/FitnessTrackingApp-for-Athletes/blob/7f9621472c200b201e315115b7315b99f1fbfbd5/frontend/src/index.css#L45-L102) | click the button, both system themes |
 | S5-R7 | no console warnings; README + AI log | [README.md](https://github.com/uanamurarescu/FitnessTrackingApp-for-Athletes/blob/main/README.md), [ai-log/etapa-05.md](https://github.com/uanamurarescu/FitnessTrackingApp-for-Athletes/blob/main/ai-log/etapa-05.md) | F12, Console |
 | S5-R8 | commit "Stage 5" pushed | [4959932](https://github.com/uanamurarescu/FitnessTrackingApp-for-Athletes/commit/495993220bc65ee016408b4cf8e8e35a25f5b6c6), [7f96214](https://github.com/uanamurarescu/FitnessTrackingApp-for-Athletes/commit/7f9621472c200b201e315115b7315b99f1fbfbd5) | commit history |
+
+## Stage 6: checklist
+ 
+| ID | Requirement | Where (permalink) | How to check |
+|---|---|---|---|
+| S6-R1 | npm run api starts, route shows JSON | [package.json#L11](https://github.com/uanamurarescu/FitnessTrackingApp-for-Athletes/blob/aed620b8d3f73822b68c89a7589c06a481f75144/frontend/package.json#L11), [db.json](https://github.com/uanamurarescu/FitnessTrackingApp-for-Athletes/blob/aed620b8d3f73822b68c89a7589c06a481f75144/frontend/db.json) | open localhost:3001/supplements |
+| S6-R2 | data no longer in React code | [App.jsx#L129](https://github.com/uanamurarescu/FitnessTrackingApp-for-Athletes/blob/aed620b8d3f73822b68c89a7589c06a481f75144/frontend/src/App.jsx#L129) (useState([]), supplements only) | read |
+| S6-R3 | loading message while waiting | [App.jsx#L130-L147](https://github.com/uanamurarescu/FitnessTrackingApp-for-Athletes/blob/aed620b8d3f73822b68c89a7589c06a481f75144/frontend/src/App.jsx#L130-L147), [Supplements_List.jsx#L24](https://github.com/uanamurarescu/FitnessTrackingApp-for-Athletes/blob/aed620b8d3f73822b68c89a7589c06a481f75144/frontend/src/components/Supplements_List.jsx#L24) | --delay 4000 |
+| S6-R4 | error message when API is down | [App.jsx#L139-L141](https://github.com/uanamurarescu/FitnessTrackingApp-for-Athletes/blob/aed620b8d3f73822b68c89a7589c06a481f75144/frontend/src/App.jsx#L139-L141), [Supplements_List.jsx#L26-L30](https://github.com/uanamurarescu/FitnessTrackingApp-for-Athletes/blob/aed620b8d3f73822b68c89a7589c06a481f75144/frontend/src/components/Supplements_List.jsx#L26-L30) | stop npm run api, refresh |
+| S6-R5 | fetch only in api.js, URL from env | [api.js#L1-L10](https://github.com/uanamurarescu/FitnessTrackingApp-for-Athletes/blob/aed620b8d3f73822b68c89a7589c06a481f75144/frontend/src/api.js#L1-L10), [.env.example](https://github.com/uanamurarescu/FitnessTrackingApp-for-Athletes/blob/12c9b641ed042d7d59d656e16e3b68b6d94aa001/frontend/.env.example) | search for fetch |
+| S6-R6 | README Stage 6 section + AI log | [README.md#L68-L72](https://github.com/uanamurarescu/FitnessTrackingApp-for-Athletes/blob/aed620b8d3f73822b68c89a7589c06a481f75144/README.md#L68-L72), [etapa-06.md](https://github.com/uanamurarescu/FitnessTrackingApp-for-Athletes/blob/aed620b8d3f73822b68c89a7589c06a481f75144/ai-log/etapa-06.md) | read |
+| S6-R7 | commit "Stage 6" pushed | [aed620b](https://github.com/uanamurarescu/FitnessTrackingApp-for-Athletes/commit/aed620b8d3f73822b68c89a7589c06a481f75144), [12c9b64](https://github.com/uanamurarescu/FitnessTrackingApp-for-Athletes/commit/12c9b641ed042d7d59d656e16e3b68b6d94aa001) | commit history |

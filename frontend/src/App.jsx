@@ -4,7 +4,8 @@ import FoodAddForm from "./components/Food_AddForm.jsx";
 import WorkoutLogList from "./components/Exercises_LogList.jsx";
 import { DAILY_GOALS, sumMacros, kcalFrom, unknownFoods } from "./components/nutrition.js";
 import SupplementsList from "./components/Supplements_List.jsx";
-import { fetchSupplements } from "./api.js";
+import SupplementsAddForm from "./components/Supplements_AddForm.jsx";
+import { createSupplement, deleteSupplement, fetchSupplements, updateSupplement } from "./api.js";
 import "./App.css";
 
 const initialFoods = [
@@ -146,11 +147,32 @@ export default function App() {
     return () => { ignore = true; };
   }, []);
 
-    function toggleSupplement(id) {
-      setSupplements((prev) =>
-    prev.map((s) => (s.id === id ? { ...s, taken: !s.taken } : s))
-  );
-}
+
+  async function addSupplement(supplement) {
+    const created = await createSupplement(supplement);
+    setSupplements((prev) => [...prev, created]);
+  }
+
+  async function toggleSupplement(id) {
+    const supplement = supplements.find((s) => s.id === id);
+    try {
+      const updated = await updateSupplement(id, { taken: !supplement.taken });
+      setSupplements((prev) => prev.map((s) => (s.id === id ? updated : s)));
+      setError(null);
+    } catch (err) {
+      setError(err.message);
+    }
+  }
+
+  async function removeSupplement(id) {
+    try {
+      await deleteSupplement(id);
+      setSupplements((prev) => prev.filter((s) => s.id !== id));
+      setError(null);
+    } catch (err) {
+      setError(err.message);
+    }
+  }
 
   const prevDay = addDays(selectedDate, -1);
   const nextDay = addDays(selectedDate, 1);
@@ -423,7 +445,15 @@ export default function App() {
         </section>
       </main>
  
-      <SupplementsList supplements={supplements} loading={loading} error={error} onToggle={toggleSupplement}/>
+      <SupplementsList
+        supplements={supplements}
+        loading={loading}
+        error={error}
+        onToggle={toggleSupplement}
+        onDelete={removeSupplement}
+      >
+      <SupplementsAddForm onAdd={addSupplement} />
+      </SupplementsList>
 
       <FoodTrackList
         foods={dayFoods}

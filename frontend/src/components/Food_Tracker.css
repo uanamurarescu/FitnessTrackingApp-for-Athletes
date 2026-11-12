@@ -313,6 +313,24 @@
   font-size: 1rem;
   white-space: nowrap;
 }
+/* Etapa 7: formularul de suplimente foloseste clasele formularului de exercitii
+   (workout-form, workout-row, workout-input, workout-add din Exercises_Log.css) */
+
+/* buton dezactivat cat timp se trimite */
+.supp-form button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* campul gresit este marcat */
+.supp-form input[aria-invalid="true"] {
+  box-shadow: 0 0 0 3px var(--danger);
+}
+
+/* in celula: masa si butonul de stergere stau in dreapta */
+.supp-cell .supp-meal { margin-left: auto; }
+
 .info { font-style: italic; font-size: 1.2rem; }
 .error {
   color: var(--danger);
